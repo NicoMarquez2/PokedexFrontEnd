@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import PokeList from './Components/PokeList';
 
 function App() {
+  const url = "http://localhost:3001/pokemon-set"
+  const [list, setList] = useState([])
+
+  useEffect(()=>{
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      setList(data)
+    });
+  },[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <React.Fragment>
+      <header>
+        
       </header>
-    </div>
+
+      <PokeList
+      list={list}/>
+    </React.Fragment>
+    
   );
 }
 
