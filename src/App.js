@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import PokeList from "./Components/PokeList";
-import Pokeball from "./Referencias/Pokeball.png";
-import Arrow from "./Referencias/Arrow.svg";
 
 function App() {
   const url = "http://localhost:3001/pokemon-set";

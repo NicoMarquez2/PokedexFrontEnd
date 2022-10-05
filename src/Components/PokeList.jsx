@@ -1,6 +1,7 @@
 import React from "react";
 import SimplePoke from "./SimplePoke";
 
+
 const PokeList = (props)=>{
     return(              
             <div className="mainList">
