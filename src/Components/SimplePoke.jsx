@@ -17,9 +17,9 @@ const SimplePoke = (props)=>{
      }
 
     return(
-        <div className={`simplePokemon`}>
-            <div><span className="">#{fixId(props.poke.id)}</span></div>
-            <div><img src={`Referencias/${props.poke.name}.png`}/></div>
+        <div className={`simplePokemon ${props.poke.type}`}>
+            <div className={`pokeId`}><span>#{fixId(props.poke.id)}</span></div>
+            <div><img className="pokeImg" src={`Referencias/${props.poke.name}.png`}/></div>
             <div className={`Pokenombre ${(typeof props.poke.type==="string") ? props.poke.type : props.poke.type[0]}`}><span>{props.poke.name}</span></div>
         </div>
     )

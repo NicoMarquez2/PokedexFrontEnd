@@ -7,6 +7,9 @@
 
 body{
   font-family: "Poppins";
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 @media (max-width: 768px){ 
 #search-wrapper {
@@ -56,15 +59,17 @@ body{
 }
 
 .simplePokemon{
-    border: solid;
-    border-radius: 25px;
-    /* color: white; */
+    width: 90%;
+    height: auto;
+    border: 1px solid;
+    border-radius: 15px;
     display: flex;
     border-color: black;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
     text-align: center;
+    background-color: white;
 }
 .water{
   background-color: #6493eb;
@@ -93,5 +98,30 @@ body{
 }
 .steel{
   background-color: #b7b9d0;
+}
+.mainList{
+  width: 90vw;
+  height: 50%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap:1%;
+}
+
+.pokeImg{
+  width: 60%;
+  height: auto;
+  background-color: white;
+  background-size: 100% 100%;
+}
+.Pokenombre{
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  color: white;
+}
+.pokeId{
+  font-size: 12px;
+  position: relative;
+  left: 30%;
 }
 }
