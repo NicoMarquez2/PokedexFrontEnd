@@ -55,5 +55,42 @@ body{
   border-color: #999;
 }
 
-
+.simplePokemon{
+    border: solid;
+    border-radius: 25px;
+    /* color: white; */
+    display: flex;
+    border-color: black;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.water{
+  background-color: #6493eb;
+}
+.electric{
+  background-color: #f9cf30;
+}
+.psychic{
+  background-color: #fb5584;
+}
+.ghost{
+  background-color: #70559b;
+}
+.normal{
+  background-color: #aaa67f;
+}
+.fire{
+  background-color: #f57d31;
+}
+.bug{
+  background-color: #a7b723;
+}
+.grass{
+  background-color: #74cb48;
+}
+.steel{
+  background-color: #b7b9d0;
+}
 }

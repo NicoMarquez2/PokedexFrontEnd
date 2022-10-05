@@ -20,7 +20,7 @@ const SimplePoke = (props)=>{
         <div className="simplePokemon">
             <div><span>#{fixId(props.poke.id)}</span></div>
             <div><img src={`Referencias/${props.poke.name}.png`}/></div>
-            <div><span>{props.poke.name}</span></div>
+            <div className={`Pokenombre ${(typeof props.poke.type==="string") ? props.poke.type : props.poke.type[0]}`}><span>{props.poke.name}</span></div>
         </div>
     )
 }
