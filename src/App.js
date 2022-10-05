@@ -17,13 +17,15 @@ function App() {
   return (
     <React.Fragment>
       <header>
-        <div>
+        <div className="pokeHeader">
+        <div className="titleContainer">
           <img src="/Referencias/Pokeball.png" className="pokeball" />
           <h1 className="title">Pokédex</h1>
         </div>
-        <div>
+        <div className="orderSelector">
           #
           <img src="/Referencias/Arrow.svg" />
+        </div>
         </div>
         <div id="search-wrapper">
           <input type="search" id="search" placeholder="Buscar" />
