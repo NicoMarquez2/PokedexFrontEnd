@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import PokeList from "./Components/PokeList";
+import PokeCard from "./Components/PokeCard";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
+
+
+
 
 function App() {
   const url = "http://localhost:3001/pokemon-set";
   const [list, setList] = useState([]);
   const [value, setValue] = useState(null)
   const [order, setOrder] = useState("id")
-  const [pokeToShow, setPokeToShow] = useState(null)
+  const [pokeToShow, setPokeToShow] = useState("")
   /*const [matches, setMatches] = useState([])*/
 
   useEffect(() => {
@@ -33,7 +38,7 @@ function App() {
   }
 
   useEffect(()=>{
-    let auxList= list
+    let auxList = list
     if(order === "id"){
       console.log("Ordeno por letra")
       auxList.sort((a,b)=> String(a.name).localeCompare(b.name))
@@ -55,30 +60,27 @@ function App() {
 
   function getPokemon(pokemon){
     setPokeToShow(pokemon)
+    console.log(pokeToShow)
   }
 
   return (
     <React.Fragment>
-      <header>
-        <div className="pokeHeader">
-        <div className="titleContainer">
-          <img src="/Referencias/Pokeball.png" className="pokeball" />
-          <h1 className="title">Pokédex</h1>
-        </div>
-        <div className="orderSelector">
-          #
-          <img onClick={changeOrder} src="/Referencias/Arrow.svg" />
-        </div>
-        </div>
-        <div id="search-wrapper">
-          <input onChange={handleChange} type="search" id="search" placeholder="Buscar" />
-        </div>
-      </header>
-
-      <PokeList list={list} 
-                getPokemon={getPokemon}/>
-
-    </React.Fragment>
+        <BrowserRouter>
+          <Routes>
+            <Route
+            path="/"
+            element = {<PokeList list={list} 
+                      getPokemon={getPokemon}
+                      changeOrder={changeOrder}
+                      handleChange={handleChange}/>}/>    
+            
+            <Route
+            path="/:id"
+            element = {<PokeCard/>}/>                      
+          </Routes>         
+        </BrowserRouter>
+      </React.Fragment>
+      
   );
 }
 

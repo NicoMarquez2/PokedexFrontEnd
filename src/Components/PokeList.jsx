@@ -1,10 +1,15 @@
 import React from "react";
 import SimplePoke from "./SimplePoke";
+import Header from "./Header";
 
 
 const PokeList = (props)=>{
-    return(              
-            <div className="mainList">
+    return(        
+            <React.Fragment>
+                <Header
+                    changeOrder={props.changeOrder}
+                    handleChange={props.handleChange}/>
+                <div className="mainList">
                 {
                     props.list.map((poke, key)=>
                         <SimplePoke
@@ -14,7 +19,9 @@ const PokeList = (props)=>{
                         />
                     )                    
                 }
-            </div>       
+                </div>   
+            </React.Fragment>      
+                
     )
 }
 
