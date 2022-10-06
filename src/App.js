@@ -36,7 +36,7 @@ function App() {
     let auxList= list
     if(order === "id"){
       console.log("Ordeno por letra")
-      auxList.sort((a,b)=> a.name.toLowerCase() - b.name.toLowerCase())
+      auxList.sort((a,b)=> String(a.name).localeCompare(b.name))
       //setOrder("Letter")
     }
     else{
@@ -44,8 +44,9 @@ function App() {
       auxList.sort((a,b)=> a.id - b.id)
       //setOrder("id")
     }
+    console.log(auxList)
     setList(auxList)
-    console.log(list)
+    
   },[order])
 
   function changeOrder(){
