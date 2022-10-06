@@ -21,16 +21,13 @@ body{
     margin-bottom: 5%;
 }
 #search-wrapper #search {
-  background-color: #f2f2f2;
   border: 1px solid #ccc;
-  border-left: 0;
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px 10px 10px 10px;
   color: #444;
   padding: .6rem .5rem;
-  font-family: 'Lato';
+  font-family: 'Poppins';
   font-size: 15px;
   font-weight: lighter;
-  -webkit-transition: border-color .2s ease;
   transition: border-color .2s ease;
   width: 100%;
   text-align: center;
@@ -55,9 +52,10 @@ body{
 
 .simplePokemon{
     width: 90%;
+    margin-bottom: 7%;
     height: auto;
     border: 1px solid;
-    border-radius: 15px;
+    border-radius: 12px;
     display: flex;
     border-color: black;
     flex-direction: column;
@@ -69,38 +67,47 @@ body{
 .water{
   background-color: #6493eb;
   border-color: #6493eb;
+  color: #6493eb;
 }
 .electric{
   background-color: #f9cf30;
   border-color: #f9cf30;
+  color: #f9cf30;
 }
 .psychic{
   background-color: #fb5584;
   border-color: #fb5584;
+  color: #fb5584;
 }
 .ghost{
   background-color: #70559b;
   border-color: #70559b;
+  color: #70559b;
 }
 .normal{
   background-color: #aaa67f;
   border-color:#aaa67f ;
+  color: #aaa67f;
 }
 .fire{
   background-color: #f57d31;
   border-color: #f57d31;
+  color: #f57d31;
 }
 .bug{
   background-color: #a7b723;
   border-color: #a7b723;
+  color: #a7b723;
 }
 .grass{
   background-color: #74cb48;
   border-color: #74cb48;
+  color: #74cb48;
 }
 .steel{
   background-color: #b7b9d0;
   border-color: #b7b9d0;
+  color: #b7b9d0;
 }
 .mainList{
   width: 90vw;
@@ -116,16 +123,21 @@ body{
   height: auto;
   background-color: white;
   background-size: 100% 100%;
+  /*<i class="fa fa-search"></i>*/
 }
 .Pokenombre{
-  border-bottom-left-radius: 13px;
-  border-bottom-right-radius: 13px;
+  font-size: 12px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   color: white;
 }
 .pokeId{
+  width: 50%;
   font-size: 12px;
   position: relative;
-  left: 30%;
+  border-radius: 15px 15px 0px 0px;
+  left: 50%;
+  background-color: white !important;
 }
 .pokeball{
   height: 40px;
@@ -146,11 +158,11 @@ body{
   align-items: center;
   position: relative;
   bottom: -10px;
-  right: 60px;
+  right: 30px;
 }
-orderSelector{
+.orderSelector{
   position: relative;
     bottom: -47px;
-    right: -50px;
+    right: -30px;
 }
 }

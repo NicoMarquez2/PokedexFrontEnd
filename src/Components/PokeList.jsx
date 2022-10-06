@@ -10,6 +10,7 @@ const PokeList = (props)=>{
                         <SimplePoke
                         poke={poke}
                         key={key}
+                        getPokemon={props.getPokemon}
                         />
                     )                    
                 }
