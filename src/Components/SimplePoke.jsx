@@ -15,7 +15,7 @@ const SimplePoke = (props)=>{
         else{
             return pokeId
         }
-     }
+     } 
 
     return(
         <Link to={`/${props.poke.id}`} className={`simplePokemon ${(typeof props.poke.type==="string") ? props.poke.type : props.poke.type[0]}`}>

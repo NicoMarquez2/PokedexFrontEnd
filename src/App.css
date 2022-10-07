@@ -197,3 +197,19 @@ body{
   flex-direction: column;
 }
 }
+.pokeName{
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.arrow{
+  filter: invert(93%) sepia(36%) saturate(462%) hue-rotate(206deg) brightness(108%) contrast(106%);
+    }
+  
+.pokebackground{
+    filter: invert(93%) sepia(36%) saturate(462%) hue-rotate(206deg) brightness(108%) contrast(106%) opacity(10%);
+    z-index: 0;
+    left: 54%;
+    top: 2%;
+    position: absolute;
+}

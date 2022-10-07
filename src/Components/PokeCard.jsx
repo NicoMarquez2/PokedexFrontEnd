@@ -2,60 +2,80 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const PokeCard = (props) => {
-  const [pokeId, setPokeId] = useState();
+  const [pokemon, setpokemon] = useState();
   const params = useParams();
   const id = params.id;
   useEffect(() => {
-    setPokeId(props.list.find((element) => element.id == id));
+    setpokemon(props.list.find((element) => element.id == id));
     
   }, [props.list]);
+ 
+   
+
+   //const pokeId = props.poke.fixId
+
+   function fixId(pokeId){
+      if (pokeId < 10){
+          return "00"+pokeId
+      }
+      else if (pokeId >= 10 && pokeId < 100){
+          return "0"+pokeId
+      }
+      else{
+          return pokeId
+      }
+   } 
+
 
   return (
     <React.Fragment>
-      {pokeId && (
-      <div className={`pokeCardOnly ${(typeof pokeId.type==="string") ? pokeId.type : pokeId.type[0]}`}>      
+      {pokemon && (
+      <div className={`pokeCardOnly ${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]}`}>      
             <div className="cardTitle">
               <div>
-                <img src="/Referencias/arrow-left.svg" />          
-                <span>{pokeId.name}</span> 
+                <img src="/Referencias/Pokeball.png" className="pokebackground"/>
+              </div>
+              <div className="lettersWhite">
+                <img src="/Referencias/arrow-left.svg" className="arrow"/>          
+                <span className="pokeName" >{pokemon.name}</span> 
               </div>       
-              <div>{pokeId.id}</div>
+              <div className="lettersWhite"><span>#{fixId(pokemon.id)}</span></div>
             </div>
 
-            <img src={`Referencias/${pokeId.name}.png`}/>
+            <img src={`Referencias/${pokemon.name}.png`}/>
             
             <div className="pokeDescription">
                 <div className="pokeType">
-                  {(typeof pokeId.type==="string") ? 
-                    <div><span>{pokeId.type}</span></div> :
+                  {(typeof pokemon.type==="string") ? 
+                    <div><span>{pokemon.type}</span></div> :
 
                     <div>
-                      <span className={`${pokeId.type[0]} lettersWhite`}>{pokeId.type[0]}</span>
-                      <span className={`${pokeId.type[1]}`}>{pokeId.type[1]}</span>
+                      <span className={`${pokemon.type[0]} lettersWhite`}>{pokemon.type[0]}</span>
+                      <span className={`${pokemon.type[1]}`}>{pokemon.type[1]}</span>
                     </div>}                
                 </div>
               
                 <div className="pokeAbout">
-                  <span className={`${pokeId.type} backgroundWhite`}>About</span>
+                  <span className={`${pokemon.type} backgroundWhite`}>About</span>
                   <div className="pokeInfo">
                     <div>
                       <img src="/Referencias/Weight.svg" alt="#"/>
-                      <span>{pokeId.weigth} Kg</span>
+                      <span>{pokemon.weigth} Kg</span>
                       <span>Weight</span>
                     </div>
                     <div>
                       <img src="/Referencias/Height.svg" alt="#"/>
-                      <span>{pokeId.height} m</span>  
+                      <span>{pokemon.height} m</span>  
                       <span>Height</span>
                     </div>
 
                     <div>
-                    {(typeof pokeId.moves==="string") ? 
-                    <div><span>{pokeId.moves}</span></div> :
+                    {(typeof pokemon.moves==="string") ? 
+                    <div><span>{pokemon.moves}</span></div> :
 
                     <div className="prueba">
-                      <span className={`${pokeId.moves[0]}`}>{pokeId.moves[0]}</span>
-                      <span className={`${pokeId.moves[1]}`}>{pokeId.moves[1]}</span>
+                      <span className={`${pokemon.moves[0]}`}>{pokemon.moves[0]}</span>
+                      <span className={`${pokemon.moves[1]}`}>{pokemon.moves[1]}</span>
                     </div>}  
                     <span>Moves</span>            
                     </div>                          
@@ -64,35 +84,35 @@ const PokeCard = (props) => {
                 </div>
 
                 <div className="pokeSummary">
-                  <span>{pokeId.description}</span>
+                  <span>{pokemon.description}</span>
                 </div>
 
                 <div className="pokeStats">
-                  <div><span className={`${pokeId.type} backgroundWhite`}>Base Stats</span></div>
+                  <div><span className={`${pokemon.type} backgroundWhite`}>Base Stats</span></div>
                   <div>
-                    <span className={`${pokeId.type} backgroundWhite`}>HP</span>
-                    <span>{pokeId.hp}</span>
+                    <span className={`${pokemon.type} backgroundWhite`}>HP</span>
+                    <span>{pokemon.hp}</span>
                     <div></div>
                   </div>
                   <div>
-                    <span className={`${pokeId.type} backgroundWhite`}>ATK</span>
-                    <span>{pokeId.atk}</span>
+                    <span className={`${pokemon.type} backgroundWhite`}>ATK</span>
+                    <span>{pokemon.atk}</span>
                   </div>
                   <div>
-                    <span className={`${pokeId.type} backgroundWhite`}>DEF</span>
-                    <span>{pokeId.def}</span>
+                    <span className={`${pokemon.type} backgroundWhite`}>DEF</span>
+                    <span>{pokemon.def}</span>
                   </div>
                   <div>
-                    <span className={`${pokeId.type} backgroundWhite`}>SATK</span>
-                    <span>{pokeId.satk}</span>
+                    <span className={`${pokemon.type} backgroundWhite`}>SATK</span>
+                    <span>{pokemon.satk}</span>
                   </div>
                   <div>
-                    <span className={`${pokeId.type} backgroundWhite`}>SDEF</span>
-                    <span>{pokeId.sdef}</span>
+                    <span className={`${pokemon.type} backgroundWhite`}>SDEF</span>
+                    <span>{pokemon.sdef}</span>
                   </div>
                   <div>
-                    <span className={`${pokeId.type} backgroundWhite`}>SPD</span>
-                    <span>{pokeId.spd}</span>
+                    <span className={`${pokemon.type} backgroundWhite`}>SPD</span>
+                    <span>{pokemon.spd}</span>
                   </div>
                 </div>
             </div>         
