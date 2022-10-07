@@ -109,6 +109,14 @@ body{
   border-color: #b7b9d0;
   color: #b7b9d0;
 }
+.poison{
+  background-color: #a43e9e;
+  color: white
+}
+.flying{
+  background-color: #a891ec;
+  color: white
+}
 .mainList{
   width: 90vw;
   height: 50%;
@@ -164,5 +172,28 @@ body{
   position: relative;
     bottom: -47px;
     right: -30px;
+}
+.backgroundWhite{
+  background-color: white !important;
+}
+.lettersWhite{
+  color: white !important;
+}
+.pokeDescription{
+  background-color: white;
+  width: 98%;
+  height: 97%;
+  margin-left: 1%;
+  margin-bottom: -3%;
+}
+.pokeAbout, .pokeSummary, .pokeStats{
+  color: black;
+}
+.pokeCardOnly{
+  font-size: 94%;
+}
+.prueba{
+  display: flex;
+  flex-direction: column;
 }
 }
