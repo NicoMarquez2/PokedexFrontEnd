@@ -76,7 +76,9 @@ function App() {
             
             <Route
             path="/:id"
-            element = {<PokeCard/>}/>                      
+            element = {<PokeCard
+            list={list}
+            />}/>                      
           </Routes>         
         </BrowserRouter>
       </React.Fragment>
