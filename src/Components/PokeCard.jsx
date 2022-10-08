@@ -53,29 +53,37 @@ const PokeCard = (props) => {
             <div className="pokeDescription">
                 <div className="pokeType">
                   {(typeof pokemon.type==="string") ? 
-                    <div><span className={`${pokemon.type} lettersWhite`}>{pokemon.type}</span></div> :
+                    <div><span className={`singleType ${pokemon.type} lettersWhite typeTitle`}>{pokemon.type}</span></div> :
 
                     <div>
-                      <span className={`${pokemon.type[0]} lettersWhite`}>{pokemon.type[0]}</span>
-                      <span className={`${pokemon.type[1]}`}>{pokemon.type[1]}</span>
+                      <span className={`dobleType1 ${pokemon.type[0]} lettersWhite`}>{pokemon.type[0]}</span>
+                      <span className={`dobleType2 ${pokemon.type[1]}`}>{pokemon.type[1]}</span>
                     </div>}                
                 </div>
               
                 <div className="pokeAbout">
-                  <span className={`${pokemon.type} backgroundWhite`}>About</span>
+                  <span className={`textAbout ${pokemon.type} backgroundWhite`}>About</span>
                   <div className="pokeInfo">
-                    <div>
-                      <img src="/Referencias/Weight.svg" alt="#"/>
-                      <span>{pokemon.weigth} Kg</span>
+                    <div className="category">
+                      <div>
+                        <img src="/Referencias/Weight.svg" alt="#"/>
+                        <span>{pokemon.weigth} Kg</span>
+                      </div>
+                      
                       <span>Weight</span>
                     </div>
-                    <div>
-                      <img src="/Referencias/Height.svg" alt="#"/>
-                      <span>{pokemon.height} m</span>  
-                      <span>Height</span>
+                    <hr></hr>
+                    <div className="category">
+                      <div>
+                        <img src="/Referencias/Height.svg" alt="#"/>
+                        <span>{pokemon.heigth} m</span>  
+                      </div>
+                      
+                      <span>heigth</span>
                     </div>
+                    <hr></hr>
 
-                    <div>
+                    <div className="category">
                     {(typeof pokemon.moves==="string") ? 
                     <div><span>{pokemon.moves}</span></div> :
 

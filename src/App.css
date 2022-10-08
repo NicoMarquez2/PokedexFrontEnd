@@ -184,12 +184,14 @@ body{
   margin-bottom: -3%;
   margin-top: 2vh;
   border-radius: 3%;
+  font-size: 80%;
+  padding-top: 19%;
+  font-size: 2vh;
 }
 .pokeAbout, .pokeSummary, .pokeStats{
   color: black;
 }
 .pokeCardOnly{
-  font-size: 94%;
   border-radius: 2%;
   width: 100vw;
   overflow: hidden;
@@ -254,4 +256,39 @@ body{
 .listComponent{
   margin-left: 5%;
   margin-right: 5%;
+}
+.pokeInfo{
+  display: flex;
+  justify-content: space-around;
+}
+.category{
+  display: flex;
+  flex-direction: column;
+}
+.typeTitle{
+  padding: 2% 4%;
+}
+
+.dobleType1{
+  margin-left: 25%;
+  border-radius: 30vh;
+  padding: 2% 4%;
+}
+.dobleType2{
+  margin-left: 5%;
+  border-radius: 30vh;
+  padding: 2% 4%;
+}
+.singleType{
+  margin-left: 42%;
+  border-radius: 30vh;
+  padding: 2% 4%;
+}
+.textAbout{
+  font-weight: bold;
+  margin-left: 40%;
+  font-size: 3vh;
+}
+.pokeAbout{
+  margin-top: 5%;
 }
