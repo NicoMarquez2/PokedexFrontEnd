@@ -62,7 +62,7 @@ const PokeCard = (props) => {
                 </div>
               
                 <div className="pokeAbout">
-                  <span className={`textAbout ${pokemon.type} backgroundWhite`}>About</span>
+                  <span className={`subtitle ${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>About</span>
                   <div className="pokeInfo">
                     <div className="category">
                       <div>
@@ -102,30 +102,30 @@ const PokeCard = (props) => {
                 </div>
 
                 <div className="pokeStats">
-                  <div><span className={`${pokemon.type} backgroundWhite`}>Base Stats</span></div>
+                  <div><span className={ ` subtitle2 ${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>Base Stats</span></div>
                   <div>
-                    <span className={`${pokemon.type} backgroundWhite`}>HP</span>
+                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>HP</span>
                     <span>{pokemon.hp}</span>
                     <div></div>
                   </div>
                   <div>
-                    <span className={`${pokemon.type} backgroundWhite`}>ATK</span>
+                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>ATK</span>
                     <span>{pokemon.atk}</span>
                   </div>
                   <div>
-                    <span className={`${pokemon.type} backgroundWhite`}>DEF</span>
+                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>DEF</span>
                     <span>{pokemon.def}</span>
                   </div>
                   <div>
-                    <span className={`${pokemon.type} backgroundWhite`}>SATK</span>
+                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SATK</span>
                     <span>{pokemon.satk}</span>
                   </div>
                   <div>
-                    <span className={`${pokemon.type} backgroundWhite`}>SDEF</span>
+                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SDEF</span>
                     <span>{pokemon.sdef}</span>
                   </div>
                   <div>
-                    <span className={`${pokemon.type} backgroundWhite`}>SPD</span>
+                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SPD</span>
                     <span>{pokemon.spd}</span>
                   </div>
                 </div>
