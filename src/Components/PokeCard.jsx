@@ -35,19 +35,25 @@ const PokeCard = (props) => {
               <div>
                 <img src="/Referencias/Pokeball.png" className="pokebackground"/>
               </div>
-              <div className="lettersWhite">
-                <img src="/Referencias/arrow-left.svg" className="arrow"/>          
-                <span className="pokeName" >{pokemon.name}</span> 
-              </div>       
-              <div className="lettersWhite"><span>#{fixId(pokemon.id)}</span></div>
+              <div className="header">
+                <div className="lettersWhite">
+                  <img src="/Referencias/arrow-left.svg" className="arrow"/>          
+                  <span className="pokeName" >{pokemon.name}</span> 
+                </div>       
+                <div className="lettersWhite bold"><span>#{fixId(pokemon.id)}</span></div>
+              </div> 
+              <div className="navigate">
+                <img className="rotate" src="/Referencias/Frame.svg" alt="#" />
+                <img src="/Referencias/Frame.svg" alt="#" />
+              </div>          
             </div>
 
-            <img src={`Referencias/${pokemon.name}.png`}/>
+            <img className="imgPokeCard" src={`Referencias/${pokemon.name}.png`}/>
             
             <div className="pokeDescription">
                 <div className="pokeType">
                   {(typeof pokemon.type==="string") ? 
-                    <div><span>{pokemon.type}</span></div> :
+                    <div><span className={`${pokemon.type} lettersWhite`}>{pokemon.type}</span></div> :
 
                     <div>
                       <span className={`${pokemon.type[0]} lettersWhite`}>{pokemon.type[0]}</span>
