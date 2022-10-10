@@ -62,6 +62,11 @@ body{
     text-align: center;
     background-color: white !important;
 }
+.rock{
+  background-color: #b69e31;
+  border-color: #b69e31;
+  color: #b69e31;
+}
 .water{
   background-color: #6493eb;
   border-color: #6493eb;
@@ -287,8 +292,10 @@ body{
 }
 .subtitle{
   font-weight: bold;
-  margin-left: 40%;
-  font-size: 3vh;
+  margin-left: 42%;
+  font-size: 2.5vh;
+  position: relative;
+  bottom: 1vh;
 }
 .pokeAbout{
   margin-top: 5%;
@@ -332,4 +339,7 @@ body{
 }
 .pokeSummary{
   margin: 5%;
+}
+.pokeType{
+  margin-left: 5%;
 }

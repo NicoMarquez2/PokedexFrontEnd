@@ -57,7 +57,7 @@ const PokeCard = (props) => {
 
                     <div>
                       <span className={`dobleType1 ${pokemon.type[0]} lettersWhite`}>{pokemon.type[0]}</span>
-                      <span className={`dobleType2 ${pokemon.type[1]}`}>{pokemon.type[1]}</span>
+                      <span className={`dobleType2 ${pokemon.type[1]} lettersWhite`}>{pokemon.type[1]}</span>
                     </div>}                
                 </div>
               
