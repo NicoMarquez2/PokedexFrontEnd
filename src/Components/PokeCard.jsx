@@ -64,26 +64,26 @@ const PokeCard = (props) => {
                 <div className="pokeAbout">
                   <span className={`subtitle ${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>About</span>
                   <div className="pokeInfo">
-                    <div className="category">
+                    <div className="categoryLeft">
                       <div>
-                        <img src="/Referencias/Weight.svg" alt="#"/>
-                        <span>{pokemon.weigth} Kg</span>
+                        <img src="/Referencias/Weight.svg" alt="#" className="imgCategory"/>
+                        <span className="spanCategory">{pokemon.weigth} Kg</span>
                       </div>
                       
-                      <span>Weight</span>
+                      <span className="categoryTitle">Weight</span>
                     </div>
                     <hr></hr>
                     <div className="category">
                       <div>
-                        <img src="/Referencias/Height.svg" alt="#"/>
-                        <span>{pokemon.heigth} m</span>  
+                        <img src="/Referencias/Height.svg" alt="#" className="imgCategory"/>
+                        <span className="spanCategory">{pokemon.heigth} m</span>  
                       </div>
                       
-                      <span>heigth</span>
+                      <span className="categoryTitle">Heigth</span>
                     </div>
                     <hr></hr>
 
-                    <div className="category">
+                    <div className="categoryRigth">
                     {(typeof pokemon.moves==="string") ? 
                     <div><span>{pokemon.moves}</span></div> :
 
@@ -91,7 +91,7 @@ const PokeCard = (props) => {
                       <span className={`${pokemon.moves[0]}`}>{pokemon.moves[0]}</span>
                       <span className={`${pokemon.moves[1]}`}>{pokemon.moves[1]}</span>
                     </div>}  
-                    <span>Moves</span>            
+                    <span className="categoryTitle">Moves</span>            
                     </div>                          
                   </div>
 
