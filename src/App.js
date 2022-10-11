@@ -39,6 +39,9 @@ function App() {
 
   useEffect(()=>{
     let auxList = list
+    if(auxList.length == 0){
+      return
+    }
     if(order === "id"){
       console.log("Ordeno por letra")
       auxList.sort((a,b)=> String(a.name).localeCompare(b.name))
@@ -55,7 +58,9 @@ function App() {
   },[order])
 
   function changeOrder(){
-    setOrder((order === "id") ? "Letter" : "id")
+    if(list.length > 0){
+      setOrder((order === "id") ? "Letter" : "id")
+    }   
   }
 
   function getPokemon(pokemon){
@@ -72,6 +77,7 @@ function App() {
             element = {<PokeList list={list} 
                       getPokemon={getPokemon}
                       changeOrder={changeOrder}
+                      order={order}
                       handleChange={handleChange}/>}/>    
             
             <Route

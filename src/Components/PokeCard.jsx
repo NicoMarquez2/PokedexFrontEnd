@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ProgressBar from "./ProgressBar";
+import { Link } from "react-router-dom";
 
 const PokeCard = (props) => {
   const [pokemon, setpokemon] = useState();
   const params = useParams();
   const id = params.id;
+
+  
   useEffect(() => {
     setpokemon(props.list.find((element) => element.id == id));
     
   }, [props.list]);
  
-   
-
-   //const pokeId = props.poke.fixId
 
    function fixId(pokeId){
       if (pokeId < 10){
@@ -24,7 +25,14 @@ const PokeCard = (props) => {
       else{
           return pokeId
       }
-   } 
+   }
+
+   function fixStats(pokeStats){
+    if(pokeStats < 100)
+        return "0"+pokeStats
+    else
+        return pokeStats
+   }
 
 
   return (
@@ -37,7 +45,10 @@ const PokeCard = (props) => {
               </div>
               <div className="header">
                 <div className="lettersWhite">
-                  <img src="/Referencias/arrow-left.svg" className="arrow"/>          
+                  <Link to={'/'}>
+                    <img src="/Referencias/arrow-left.svg" className="arrow"/>   
+                  </Link>
+                         
                   <span className="pokeName" >{pokemon.name}</span> 
                 </div>       
                 <div className="lettersWhite bold"><span>#{fixId(pokemon.id)}</span></div>
@@ -102,32 +113,37 @@ const PokeCard = (props) => {
                 </div>
 
                 <div className="pokeStats">
-                  <div><span className={ ` subtitle2 ${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>Base Stats</span></div>
-                  <div>
-                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>HP</span>
-                    <span>{pokemon.hp}</span>
-                    <div></div>
+                  <div><span className={ ` subtitle2 ${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>Base Stats</span></div>                  
+                  <div className="statsFlex">
+                    <div className="nameAndNumber">
+                      <div className="stats">
+                        <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>HP</span>
+                        <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>ATK</span>  
+                        <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>DEF</span>
+                        <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SATK</span>
+                        <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SDEF</span> 
+                        <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SPD</span>             
+                      </div>
+                      <hr />
+                      <div className="stats">
+                        <span>{fixStats(pokemon.hp)}</span>
+                        <span>{fixStats(pokemon.atk)}</span>
+                        <span>{fixStats(pokemon.def)}</span>
+                        <span>{fixStats(pokemon.satk)}</span>
+                        <span>{fixStats(pokemon.sdef)}</span>
+                        <span>{fixStats(pokemon.spd)}</span>
+                      </div>
+                    </div>
+                   
+
+                    <div className="stateBar">
+                      <ProgressBar
+                      poke={pokemon}
+                      stat={pokemon.hp}>
+                      </ProgressBar>
+                    </div>
                   </div>
-                  <div>
-                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>ATK</span>
-                    <span>{pokemon.atk}</span>
-                  </div>
-                  <div>
-                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>DEF</span>
-                    <span>{pokemon.def}</span>
-                  </div>
-                  <div>
-                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SATK</span>
-                    <span>{pokemon.satk}</span>
-                  </div>
-                  <div>
-                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SDEF</span>
-                    <span>{pokemon.sdef}</span>
-                  </div>
-                  <div>
-                    <span className={`${(typeof pokemon.type==="string") ? pokemon.type : pokemon.type[0]} backgroundWhite`}>SPD</span>
-                    <span>{pokemon.spd}</span>
-                  </div>
+                  
                 </div>
             </div>         
       </div>

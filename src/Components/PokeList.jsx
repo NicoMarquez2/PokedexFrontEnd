@@ -9,7 +9,8 @@ const PokeList = (props)=>{
                 <div className="listComponent">
                     <Header
                         changeOrder={props.changeOrder}
-                        handleChange={props.handleChange}/>
+                        handleChange={props.handleChange}
+                        order={props.order}/>
                     <div className="mainList">
                     {
                         props.list.map((poke, key)=>
