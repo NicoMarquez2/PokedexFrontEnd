@@ -10,7 +10,6 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 function App() {
   const url = "http://localhost:3001/pokemon-set";
   const [list, setList] = useState([]);
-  const [value, setValue] = useState(null)
   const [order, setOrder] = useState("id")
   const [pokeToShow, setPokeToShow] = useState("")
   /*const [matches, setMatches] = useState([])*/
@@ -33,9 +32,7 @@ function App() {
     }
   },[value])*/
 
-  function handleChange(e){
-    setValue(e.target.value)
-  }
+  
 
   useEffect(()=>{
     let auxList = list
@@ -68,6 +65,8 @@ function App() {
     console.log(pokeToShow)
   }
 
+
+
   return (
     <React.Fragment>
         <BrowserRouter>
@@ -78,7 +77,7 @@ function App() {
                       getPokemon={getPokemon}
                       changeOrder={changeOrder}
                       order={order}
-                      handleChange={handleChange}/>}/>    
+                      />}/>    
             
             <Route
             path="/:id"
