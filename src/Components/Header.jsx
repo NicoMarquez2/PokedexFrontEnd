@@ -2,18 +2,6 @@ import React from "react";
 
 const Header = (props)=>{
 
-    function changeOrderImg(){
-      if (props.order === "#"){
-        console.log("# debe ser A-Z")
-        return true
-      }
-   
-      else{
-        console.log("A-Z debe ser #")
-        return false
-      }
-    }
-
     return(
         <header>
             <div className="pokeHeader">

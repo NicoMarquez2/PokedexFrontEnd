@@ -20,7 +20,7 @@ const PokeList = (props) => {
           order={props.order}
         />
         <div className="mainList">
-          {props.list.filter((pokemon)=>pokemon.name.includes(value)).map((poke, key) => (
+          {props.list.filter((pokemon)=>pokemon.name.toLowerCase().includes(value.toLowerCase())).map((poke, key) => (
             <SimplePoke
               list={props.list}
               poke={poke}

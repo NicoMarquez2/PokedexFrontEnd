@@ -12,7 +12,6 @@ function App() {
   const [list, setList] = useState([]);
   const [order, setOrder] = useState("id")
   const [pokeToShow, setPokeToShow] = useState("")
-  /*const [matches, setMatches] = useState([])*/
 
   useEffect(() => {
     fetch(url)
@@ -23,36 +22,27 @@ function App() {
       });
   }, []);
 
-  /*useEffect(()=>{
-    if(isNaN(value)){
-      var expression = /[A-Z]/gi.include
-      var matches = []
-        matches = list[0].name.match(expression)     
-        console.log(matches)
-    }
-  },[value])*/
-
-  
-
   useEffect(()=>{
     let auxList = list
     if(auxList.length == 0){
       return
     }
+
     if(order === "id"){
       console.log("Ordeno por letra")
+      console.log(order)
       auxList.sort((a,b)=> String(a.name).localeCompare(b.name))
-      //setOrder("Letter")
     }
+
     else{
       console.log("Ordeno por numero")
+      console.log(order)
       auxList.sort((a,b)=> a.id - b.id)
-      //setOrder("id")
     }
     console.log(auxList)
     setList(auxList)
     
-  },[order])
+  })
 
   function changeOrder(){
     if(list.length > 0){
