@@ -10,7 +10,7 @@ const Header = (props)=>{
               <h1 className="title">Pokédex</h1>
             </div>
             <div className="orderSelector">
-              <span>{(props.order === "Letter") ? "A-Z":"#"}</span>
+              <span>{(props.order === "id") ? "A-Z":"#"}</span>
               <img onClick={()=>props.changeOrder()} alt="#" src="/Referencias/Arrow.svg" />
             </div>
             </div>
