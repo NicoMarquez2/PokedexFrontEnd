@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProgressBar = (poke, stat)=>{
+const ProgressBar = ({poke, stat})=>{
     
     function getPercentage(pokemonStat){
         let aux = pokemonStat
@@ -10,7 +10,7 @@ const ProgressBar = (poke, stat)=>{
     }
     
     const noProgress = {
-        height: '15%',
+        height: '5%',
         width: '40vh',
         backgroundColor: 'whitesmoke',
         borderRadius: '10%',
@@ -19,18 +19,24 @@ const ProgressBar = (poke, stat)=>{
       
       const progress = {
         height: '100%',
-        width: '${(stat*100)/255}%',
-        backgroundColor: 'skyblue',
+        width: `${(stat*100)/255}%`,
+        // backgroundColor: `${poke.type}`,
         borderRadius:'10px',
         margin : '10',
         textAlign: 'right'
       }
+      console.log(progress)
 
 
     return(
-        <div style={noProgress}className="statsFlex">
-            <div style={progress}>
-                <span>hola</span>
+        <div style={noProgress} className='statsFlex'>
+
+            
+            <div style={progress} className={`${
+                  typeof poke.type === "string"
+                    ? poke.type
+                    : poke.type[0]
+                }`}>
             </div>
         </div>
     )

@@ -361,5 +361,8 @@ body{
   width: 22%;
 }
 .stateBar{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 5%;
 }

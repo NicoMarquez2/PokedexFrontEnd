@@ -57,12 +57,20 @@ const PokeCard = (props) => {
               </div>
             </div>
             <div className="navigate">
-              <Link to={`/${props.list[pokemonIdx-1].id}`}>
-              <img className="rotate" src="/Referencias/Frame.svg" alt="#" />
-              </Link>
-              <Link to={`/${props.list[pokemonIdx+1].id}`}>
-                <img src="/Referencias/Frame.svg" alt="#" />
-              </Link>
+              {props.list[pokemonIdx - 1] && (
+                <Link to={`/${props.list[pokemonIdx - 1].id}`}>
+                  <img
+                    className="rotate"
+                    src="/Referencias/Frame.svg"
+                    alt="#"
+                  />
+                </Link>
+              )}
+              {props.list[pokemonIdx + 1] && (
+                <Link to={`/${props.list[pokemonIdx + 1].id}`}>
+                  <img src="/Referencias/Frame.svg" alt="#" />
+                </Link>
+              )}
             </div>
           </div>
 
@@ -242,6 +250,12 @@ const PokeCard = (props) => {
 
                 <div className="stateBar">
                   <ProgressBar poke={pokemon} stat={pokemon.hp}></ProgressBar>
+                  <ProgressBar poke={pokemon} stat={pokemon.atk}></ProgressBar>
+                  <ProgressBar poke={pokemon} stat={pokemon.def}></ProgressBar>
+                  <ProgressBar poke={pokemon} stat={pokemon.satk}></ProgressBar>
+                  <ProgressBar poke={pokemon} stat={pokemon.sdef}></ProgressBar>
+                  <ProgressBar poke={pokemon} stat={pokemon.spd}></ProgressBar>
+                  
                 </div>
               </div>
             </div>
