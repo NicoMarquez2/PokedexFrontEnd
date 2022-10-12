@@ -56,7 +56,7 @@ const PokeCard = (props) => {
                 <span>#{fixId(pokemon.id)}</span>
               </div>
             </div>
-            <div className="navigate">
+            <div className= {`navigate ${pokemonIdx == 0 ? 'onlyToRight':''}`}>
               {props.list[pokemonIdx - 1] && (
                 <Link to={`/${props.list[pokemonIdx - 1].id}`}>
                   <img
@@ -68,7 +68,7 @@ const PokeCard = (props) => {
               )}
               {props.list[pokemonIdx + 1] && (
                 <Link to={`/${props.list[pokemonIdx + 1].id}`}>
-                  <img src="/Referencias/Frame.svg" alt="#" className="onlyToRight"/>
+                  <img src="/Referencias/Frame.svg" alt="#"/>
                 </Link>
               )}
             </div>

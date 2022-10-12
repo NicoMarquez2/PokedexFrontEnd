@@ -14,8 +14,8 @@ const Header = (props)=>{
               <img onClick={()=>props.changeOrder()} alt="#" src="/Referencias/Arrow.svg" />
             </div>
             </div>
-            <div id="search-wrapper">
-              <input onChange={props.handleChange} type="search" id="search" placeholder="Buscar" />
+            <div className="searchPokemon">
+              <input onChange={props.handleChange} type="search" className="search" placeholder="Buscar" />
             </div>
         </header>
     )
