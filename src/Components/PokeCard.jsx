@@ -68,7 +68,7 @@ const PokeCard = (props) => {
               )}
               {props.list[pokemonIdx + 1] && (
                 <Link to={`/${props.list[pokemonIdx + 1].id}`}>
-                  <img src="/Referencias/Frame.svg" alt="#" />
+                  <img src="/Referencias/Frame.svg" alt="#" className="onlyToRight"/>
                 </Link>
               )}
             </div>

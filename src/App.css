@@ -161,6 +161,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-left: 4vh;
 }
 .titleContainer{
   display: flex;
@@ -259,7 +260,7 @@ body{
   font-weight: bold;
 }
 .listComponent{
-  margin-left: 5%;
+  margin-left: 6%;
   margin-right: 5%;
 }
 .pokeInfo{
@@ -349,7 +350,7 @@ body{
 }
 .statsFlex{
   display: flex;
-  width: 100%;
+  width: 70%;
 }
 .stats{
   display: flex;
@@ -365,4 +366,7 @@ body{
     flex-direction: column;
     justify-content: space-around;
     margin-left: 5%;
+}
+.onlyToRight{
+  
 }

@@ -40,8 +40,7 @@ function App() {
       auxList.sort((a,b)=> a.id - b.id)
     }
     console.log(auxList)
-    setList(auxList)
-    
+    setList(auxList)   
   })
 
   function changeOrder(){
@@ -73,6 +72,7 @@ function App() {
             path="/:id"
             element = {<PokeCard
             list={list}
+            order={order}
             />}/>                      
           </Routes>         
         </BrowserRouter>
