@@ -37,7 +37,7 @@ const PokeCard = (props) => {
       {pokemon && (
         <div
           className={`pokeCardOnly ${
-            typeof pokemon.type === "string" ? pokemon.type : pokemon.type[0]
+            pokemon.type === "string" ? pokemon.type : pokemon.type[0]
           }`}
         >
           <div className="cardTitle">
@@ -80,8 +80,11 @@ const PokeCard = (props) => {
           />
 
           <div className="pokeDescription">
-            <div className="pokeType">
-              {typeof pokemon.type === "string" ? (
+             <div className="pokeType">
+              {pokemon.type.map((type)=>(
+                <span className={`singleType ${type} lettersWhite typeTitle`}>{type}</span>
+              ))}
+              {/*{typeof pokemon.type === "string" ? (
                 <div>
                   <span
                     className={`singleType ${pokemon.type} lettersWhite typeTitle`}
@@ -101,9 +104,9 @@ const PokeCard = (props) => {
                   >
                     {pokemon.type[1]}
                   </span>
-                </div>
-              )}
-            </div>
+                </div>*
+              )}*/}
+            </div> 
 
             <div className="pokeAbout">
               <span
