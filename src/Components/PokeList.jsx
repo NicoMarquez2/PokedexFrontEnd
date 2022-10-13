@@ -6,24 +6,19 @@ import Header from "./Header";
 const PokeList = (props) => {
   const [value, setValue] = useState("");
   const [order, setOrder] = useState("Letter");
-  const [ auxList,setAuxList] = useState([])
+  const [auxList,setAuxList] = useState([])
 
 
   function handleChange(e) {
     setValue(e.target.value);
-    console.log(value);
   }
   
   useEffect(()=>{
     if(order === "id"){
-      console.log("Ordeno por letra")
-      console.log(order)
       props.list.sort((a,b)=> String(a.name).localeCompare(b.name))
     }
 
     else{
-      console.log("Ordeno por numero")
-      console.log(order)
       props.list.sort((a,b)=> a.id - b.id)
     }
     setAuxList(Object.assign([],props.list))   
@@ -33,10 +28,6 @@ const PokeList = (props) => {
       setOrder((order === "id") ? "Letter" : "id")
     
   }
-
-  useEffect(()=>{
-    console.log(auxList)
-  },[auxList])
 
   return (
     <React.Fragment>

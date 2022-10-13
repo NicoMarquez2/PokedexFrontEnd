@@ -24,10 +24,7 @@ function App() {
 
   function getPokemon(pokemon){
     setPokeToShow(pokemon)
-    console.log(pokeToShow)
   }
-
-
 
   return (
     <React.Fragment>
