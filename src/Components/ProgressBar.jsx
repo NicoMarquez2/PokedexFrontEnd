@@ -4,7 +4,7 @@ const ProgressBar = ({poke, stat})=>{
     
     const noProgress = {
         height: '5%',
-        width: '40vh',
+        width: '35vh',
         backgroundColor: 'whitesmoke',
         borderRadius: '10%',
         margin: '10',

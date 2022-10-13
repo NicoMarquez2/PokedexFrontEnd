@@ -56,7 +56,7 @@ const PokeCard = (props) => {
                 <span>#{fixId(pokemon.id)}</span>
               </div>
             </div>
-            <div className= {`navigate ${pokemonIdx == 0 ? 'onlyToRight':''}`}>
+            <div className={`navigate ${pokemonIdx == 0 ? "onlyToRight" : ""}`}>
               {props.list[pokemonIdx - 1] && (
                 <Link to={`/${props.list[pokemonIdx - 1].id}`}>
                   <img
@@ -68,7 +68,7 @@ const PokeCard = (props) => {
               )}
               {props.list[pokemonIdx + 1] && (
                 <Link to={`/${props.list[pokemonIdx + 1].id}`}>
-                  <img src="/Referencias/Frame.svg" alt="#"/>
+                  <img src="/Referencias/Frame.svg" alt="#" />
                 </Link>
               )}
             </div>
@@ -80,16 +80,19 @@ const PokeCard = (props) => {
           />
 
           <div className="pokeDescription">
-             <div className="pokeType">
-              {pokemon.type.map((type)=>(
-                <span className={`types ${type} lettersWhite typeTitle`}>{type}</span>
+            <div className="pokeType">
+              {pokemon.type.map((type, key) => (
+                <span
+                  key={key}
+                  className={`types ${type} lettersWhite typeTitle`}
+                >
+                  {type}
+                </span>
               ))}
-            </div> 
+            </div>
 
             <div className="pokeAbout">
-              <span
-                className={`subtitle ${pokemon.type[0]} backgroundWhite`}
-              >
+              <span className={`subtitle ${pokemon.type[0]} backgroundWhite`}>
                 About
               </span>
               <div className="pokeInfo">
@@ -191,7 +194,7 @@ const PokeCard = (props) => {
                   <ProgressBar poke={pokemon} stat={pokemon.def}></ProgressBar>
                   <ProgressBar poke={pokemon} stat={pokemon.satk}></ProgressBar>
                   <ProgressBar poke={pokemon} stat={pokemon.sdef}></ProgressBar>
-                  <ProgressBar poke={pokemon} stat={pokemon.spd}></ProgressBar>                  
+                  <ProgressBar poke={pokemon} stat={pokemon.spd}></ProgressBar>
                 </div>
               </div>
             </div>

@@ -197,6 +197,9 @@ body{
     font-size: x-large;
     font-weight: bold;
     padding-left: 2vh;
+    position: relative;
+    top: -0.5vh;
+   
   }
   
   .arrow{
@@ -506,13 +509,21 @@ body{
   flex-direction: row;
   align-items: center;
   position: relative;
-  bottom: -10px;
-  right: 30px;
+  bottom: -1.5vh;
+  right: 13%;
 }
 .orderSelector{
-  position: relative;
+    position: relative;
     bottom: -47px;
     right: -30px;
+    width: 50px !important;
+    text-align: end;
+}
+
+.orderSelector span{
+    position: relative;
+    top: -0.5vh;
+    right: 1vw;
 }
 .backgroundWhite{
   background-color: white !important;
@@ -551,6 +562,8 @@ body{
   font-weight: bold;
   padding-left: 2vh;
   padding-bottom: 2vh;
+  position: relative;
+  top: -0.5vh;
 }
 
 .arrow{
@@ -596,7 +609,11 @@ body{
   transform: rotate(180deg);
 }
 .bold{
-  font-weight: bold;
+    font-weight: bold;
+    font-size: small;
+    position: relative;
+    right: 2vh;
+    bottom: 0.5vh;
 }
 .listComponent{
   margin-left: 6%;
@@ -605,8 +622,8 @@ body{
 .pokeInfo{
     display: flex;
     justify-content: space-around;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 .category{
   display: flex;
@@ -682,7 +699,7 @@ body{
     position: relative;
     right: -17%;
     color: #ADAAAA;
-    height: 10%;
+    height: 22%;
 }
 .spanCategory{
   position: relative;
@@ -713,13 +730,13 @@ body{
 .nameAndNumber{
   display: flex;
   width: 22%;
-  gap: 4%;
+  gap: 25%;
 }
 .stateBar{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-left: 5%;
+    margin-left: 17%;
 }
 .onlyToRight{
  justify-content: flex-end;
@@ -727,3 +744,5 @@ body{
 a:link, a:visited, a:active {
   text-decoration:none;
 }
+
+
