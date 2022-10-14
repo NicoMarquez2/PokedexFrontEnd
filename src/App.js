@@ -28,9 +28,9 @@ function App() {
                 spd: data.stats[5].base_stat,
                 weigth: data.weight / 10,
                 heigth: data.height / 10,
-                moves: data.moves.slice(0, 2).map((move) => move.move.name),
+                moves: data.moves.slice(0, 2).map((move) => move.move.name.charAt(0).toUpperCase() + move.move.name.slice(1)),
                 type: data.types.map((type) => type.type.name),
-                description,
+                description: description.charAt(0).toUpperCase() + description.slice(1),
                 id: data.id,
               });
               console.log("aux", aux);
@@ -40,9 +40,8 @@ function App() {
       }
       async function getDescription(data) {
         const resp = await fetch(data.species.url);
-        const data2 = await resp.json()
-        return data2.flavor_text_entries[69].flavor_text 
-
+        const data2 = await resp.json();
+        return data2.flavor_text_entries[69].flavor_text;
       }
     }
     fetchData();

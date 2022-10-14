@@ -124,20 +124,13 @@ const PokeCard = (props) => {
                 <hr></hr>
 
                 <div className="categoryRigth">
-                  {typeof pokemon.moves === "string" ? (
-                    <div>
-                      <span>{pokemon.moves}</span>
-                    </div>
-                  ) : (
-                    <div className="prueba">
-                      <span className={`${pokemon.moves[0]}`}>
-                        {pokemon.moves[0]}
-                      </span>
-                      <span className={`${pokemon.moves[1]}`}>
-                        {pokemon.moves[1]}
-                      </span>
-                    </div>
-                  )}
+                {pokemon.moves.map((moves, key) => (
+                <span
+                  key={key}
+                  >
+                  {moves}
+                </span>
+              ))}
                   <span className="categoryTitle">Moves</span>
                 </div>
               </div>
