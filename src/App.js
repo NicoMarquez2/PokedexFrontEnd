@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     let aux = [];
     async function fetchData() {
-      for (let i = 1; i <= 200; i++) {
+      for (let i = 1; i <= 100; i++) {
         await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
           .then((response) => response.json())
           .then((data) => {
@@ -39,14 +39,6 @@ function App() {
           });
       }
       async function getDescription(data) {
-        // return new Promise((res, rej) => {
-        //   fetch(data.species.url)
-        //     .then((response) => response.json())
-        //     .then((data2) => {
-        //       console.log(data2.flavor_text_entries[69].flavor_text);
-        //       res(data2.flavor_text_entries[69].flavor_text);
-        //     });
-        // });
         const resp = await fetch(data.species.url);
         const data2 = await resp.json()
         return data2.flavor_text_entries[69].flavor_text 
