@@ -21,7 +21,7 @@ function App() {
         console.log(data)
         aux.push(
           {
-            "name":charAt(0).toUpperCase(data.name),
+            "name":data.name.charAt(0).toUpperCase()+data.name.slice(1),
             "image":data.sprites.other['official-artwork'].front_default,
             "hp":data.stats[0].base_stat,
             "atk":data.stats[1].base_stat,
