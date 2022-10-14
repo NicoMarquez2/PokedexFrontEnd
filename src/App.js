@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     let aux =[]
     async function fetchData(){
-      for(let i = 1; i <= 20; i++){
+      for(let i = 1; i <= 35; i++){
         await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         .then((response) => response.json())
         .then((data) => {

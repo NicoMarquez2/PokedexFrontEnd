@@ -402,6 +402,36 @@ body{
     text-align: center;
     background-color: white !important;
 }
+.ice{
+  background-color: #9ad6df;
+  border-color: #9ad6df;
+  color: #9ad6df;
+}
+.dark{
+  background-color: #75574c;
+  border-color: #75574c;
+  color: #75574c;
+}
+.fairy{
+  background-color: #e69eac;
+  border-color: #e69eac;
+  color: #e69eac;
+}
+.fighting{
+  background-color: #c12239;
+  border-color: #c12239;
+  color: #c12239;
+}
+.ground{
+  background-color: #dec169;
+  border-color: #dec169;
+  color: #dec169;
+}
+.dragon{
+  background-color: #7037ff;
+  border-color: #7037ff;
+  color: #7037ff;
+}
 .rock{
   background-color: #b69e31;
   border-color: #b69e31;
