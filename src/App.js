@@ -8,17 +8,41 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 
 function App() {
-  const url = "http://localhost:3001/pokemon-set";
   const [list, setList] = useState([]);
   const [pokeToShow, setPokeToShow] = useState("")
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        data.sort((a,b)=> a.id - b.id)
-        setList(data);
-      });
+    let aux =[]
+    async function fetchData(){
+      for(let i = 1; i <= 20; i++){
+        await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+        .then((response) => response.json())
+        .then((data) => {
+        console.log(data)
+        aux.push(
+          {
+            "name":charAt(0).toUpperCase(data.name),
+            "image":data.sprites.other['official-artwork'].front_default,
+            "hp":data.stats[0].base_stat,
+            "atk":data.stats[1].base_stat,
+            "def":data.stats[2].base_stat,
+            "satk":data.stats[3].base_stat,
+            "sdef":data.stats[4].base_stat,
+            "spd":data.stats[5].base_stat,
+            "weigth":data.weight/10,
+            "heigth":data.height/10,
+            "moves":data.moves.slice(0,2).map((move)=> move.move.name),
+            "type":data.types.map((type)=> type.type.name),
+            "description":"When it retract its long neck into its shell, its squirts out water with vegorouse force",
+            "id":data.id
+            }
+        )
+        });
+        
+      }  
+      setList(aux)
+    }
+     fetchData()
   }, []);
 
 

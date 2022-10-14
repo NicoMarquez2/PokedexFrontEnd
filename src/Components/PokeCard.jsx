@@ -76,7 +76,7 @@ const PokeCard = (props) => {
 
           <img
             className="imgPokeCard"
-            src={`Referencias/${pokemon.name}.png`}
+            src={`${pokemon.image}`}
           />
 
           <div className="pokeDescription">

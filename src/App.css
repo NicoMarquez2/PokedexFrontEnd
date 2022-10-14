@@ -402,61 +402,61 @@ body{
     text-align: center;
     background-color: white !important;
 }
-.Rock{
+.rock{
   background-color: #b69e31;
   border-color: #b69e31;
   color: #b69e31;
 }
-.Water{
+.water{
   background-color: #6493eb;
   border-color: #6493eb;
   color: #6493eb;
 }
-.Electric{
+.electric{
   background-color: #f9cf30;
   border-color: #f9cf30;
   color: #f9cf30;
 }
-.Psychic{
+.psychic{
   background-color: #fb5584;
   border-color: #fb5584;
   color: #fb5584;
 }
-.Ghost{
+.ghost{
   background-color: #70559b;
   border-color: #70559b;
   color: #70559b;
 }
-.Normal{
+.normal{
   background-color: #aaa67f;
   border-color:#aaa67f ;
   color: #aaa67f;
 }
-.Fire{
+.fire{
   background-color: #f57d31;
   border-color: #f57d31;
   color: #f57d31;
 }
-.Bug{
+.bug{
   background-color: #a7b723;
   border-color: #a7b723;
   color: #a7b723;
 }
-.Grass{
+.grass{
   background-color: #74cb48;
   border-color: #74cb48;
   color: #74cb48;
 }
-.Steel{
+.steel{
   background-color: #b7b9d0;
   border-color: #b7b9d0;
   color: #b7b9d0;
 }
-.Poison{
+.poison{
   background-color: #a43e9e;
   color: white
 }
-.Flying{
+.flying{
   background-color: #a891ec;
   color: white
 }
