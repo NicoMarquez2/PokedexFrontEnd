@@ -14,11 +14,10 @@ function App() {
   useEffect(() => {
     let aux =[]
     async function fetchData(){
-      for(let i = 1; i <= 35; i++){
+      for(let i = 1; i <= 20; i++){
         await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         .then((response) => response.json())
         .then((data) => {
-        console.log(data)
         aux.push(
           {
             "name":data.name.charAt(0).toUpperCase()+data.name.slice(1),
@@ -33,12 +32,18 @@ function App() {
             "heigth":data.height/10,
             "moves":data.moves.slice(0,2).map((move)=> move.move.name),
             "type":data.types.map((type)=> type.type.name),
-            "description":"When it retract its long neck into its shell, its squirts out water with vegorouse force",
+            "description": getDescription(data),
             "id":data.id
             }
         )
+        console.log(aux)
         });
         
+      }
+      function getDescription(data){
+        fetch(data.species.url)
+        .then((response) => response.json())
+        .then((data2)=>{console.log(data2.flavor_text_entries[69].flavor_text);return(data2.flavor_text_entries[69].flavor_text)})
       }  
       setList(aux)
     }
