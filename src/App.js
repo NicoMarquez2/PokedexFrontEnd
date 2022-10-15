@@ -16,7 +16,6 @@ function App() {
           .then((response) => response.json())
           .then((data) => {
             getDescription(data).then((description) => {
-              console.log(description, "desc.");
               aux.push({
                 name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
                 image: data.sprites.other["official-artwork"].front_default,
@@ -29,11 +28,10 @@ function App() {
                 weigth: data.weight / 10,
                 heigth: data.height / 10,
                 moves: data.moves.slice(0, 2).map((move) => move.move.name.charAt(0).toUpperCase() + move.move.name.slice(1)),
-                type: data.types.map((type) => type.type.name),
+                type: data.types.map((type) => type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)),
                 description: description.charAt(0).toUpperCase() + description.slice(1),
                 id: data.id,
               });
-              console.log("aux", aux);
               setList(aux);
             });
           });

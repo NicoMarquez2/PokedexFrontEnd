@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
 import { Link } from "react-router-dom";
+import CardTitle from "./CardTitle";
 
 const PokeCard = (props) => {
   const [pokemon, setpokemon] = useState();
@@ -36,42 +37,14 @@ const PokeCard = (props) => {
     <React.Fragment>
       {pokemon && (
         <div
-          className={`pokeCardOnly ${
-            pokemon.type === "string" ? pokemon.type : pokemon.type[0]
-          }`}
+          className={`pokeCardOnly ${pokemon.type[0]}`}
         >
           <div className="cardTitle">
-            <div>
-              <img src="/Referencias/Pokeball.png" className="pokebackground" />
-            </div>
-            <div className="header">
-              <div className="lettersWhite">
-                <Link to={"/"}>
-                  <img src="/Referencias/arrow-left.svg" className="arrow" />
-                </Link>
-
-                <span className="pokeName">{pokemon.name}</span>
-              </div>
-              <div className="lettersWhite bold">
-                <span>#{fixId(pokemon.id)}</span>
-              </div>
-            </div>
-            <div className={`navigate ${pokemonIdx == 0 ? "onlyToRight" : ""}`}>
-              {props.list[pokemonIdx - 1] && (
-                <Link to={`/${props.list[pokemonIdx - 1].id}`}>
-                  <img
-                    className="rotate"
-                    src="/Referencias/Frame.svg"
-                    alt="#"
-                  />
-                </Link>
-              )}
-              {props.list[pokemonIdx + 1] && (
-                <Link to={`/${props.list[pokemonIdx + 1].id}`}>
-                  <img src="/Referencias/Frame.svg" alt="#" />
-                </Link>
-              )}
-            </div>
+              <CardTitle
+              pokemon={pokemon}
+              pokemonIdx={pokemonIdx}
+              fixId={fixId}
+              list={props.list}/>
           </div>
 
           <img
