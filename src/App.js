@@ -15,7 +15,7 @@ function App() {
       await fetch(url)
       .then((response)=>response.json())
       .then((data) => {
-        for(i = 0; i<data.pokemons.length - 1; i++)
+        for(let i = 0; i<data.pokemons.length - 1; i++)
         aux.push({
           name: data.pokemons[i].name,
           image: data.pokemons[i].img,
@@ -27,13 +27,16 @@ function App() {
           spd: data.pokemons[i].spd,
           weigth: data.pokemons[i].weigth,
           heigth: data.pokemons[i].heigth,
-          moves: data.movements,
-          type:data,
+          moves: 'movimientos',
+          type:'types',
           description: data.pokemons[i].name,
           id: data.pokemons[i].id,
         })
+        console.log(aux)
+        setList(aux)
       })
     }
+    fetchData()
   },[])
 
   /*useEffect(() => {
