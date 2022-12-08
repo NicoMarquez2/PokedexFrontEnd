@@ -98,7 +98,7 @@ body{
   }
   .poison{
     background-color: #a43e9e;
-    color: white
+    color: #a43e9e
   }
   .flying{
     background-color: #a891ec;
@@ -484,7 +484,8 @@ body{
 }
 .Poison{
   background-color: #a43e9e;
-  color: white
+  border-color: #a43e9e;
+  color: #a43e9e
 }
 .Flying{
   background-color: #a891ec;

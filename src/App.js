@@ -5,13 +5,41 @@ import PokeCard from "./Components/PokeCard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  const url = 'http://localhost:8080/pokemon'
   const [list, setList] = useState([]);
   const [pokeToShow, setPokeToShow] = useState("");
 
   useEffect(() => {
+    let aux = []
+    async function fetchData(){
+      await fetch(url)
+      .then((response)=>response.json())
+      .then((data) => {
+        for(i = 0; i<data.pokemons.length - 1; i++)
+        aux.push({
+          name: data.pokemons[i].name,
+          image: data.pokemons[i].img,
+          hp: data.pokemons[i].hp,
+          atk: data.pokemons[i].atk,
+          def: data.pokemons[i].def,
+          satk: data.pokemons[i].satk,
+          sdef: data.pokemons[i].sdef,
+          spd: data.pokemons[i].spd,
+          weigth: data.pokemons[i].weigth,
+          heigth: data.pokemons[i].heigth,
+          moves: data.movements,
+          type:data,
+          description: data.pokemons[i].name,
+          id: data.pokemons[i].id,
+        })
+      })
+    }
+  },[])
+
+  /*useEffect(() => {
     let aux = [];
     async function fetchData() {
-      for (let i = 1; i <= 100; i++) {
+      for (let i = 1; i <= 151; i++) {
         await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
           .then((response) => response.json())
           .then((data) => {
@@ -39,11 +67,12 @@ function App() {
       async function getDescription(data) {
         const resp = await fetch(data.species.url);
         const data2 = await resp.json();
-        return data2.flavor_text_entries[69].flavor_text;
+        const description = data2.flavor_text_entries.find(data => data.language.name == 'es')
+        return description.flavor_text
       }
     }
     fetchData();
-  }, []);
+  }, []);*/
 
   function getPokemon(pokemon) {
     setPokeToShow(pokemon);
