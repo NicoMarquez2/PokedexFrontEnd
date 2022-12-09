@@ -52,6 +52,7 @@ const Login = (props) => {
     return(
 
         <div>
+            <Link to = {"/register"}><button>REGISTER</button></Link>
             <Link to={"/"}>
                 <img src="/Referencias/arrow-left.svg" className="arrow" />
             </Link>
