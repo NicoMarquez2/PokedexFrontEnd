@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { Link, Navigate, redirect, Router } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import  { Redirect } from 'react-router-dom'
+
 
 const Login = (props) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
+    let navigate = useNavigate('')
 
     const url ="http://localhost:8080/login"
 
@@ -39,6 +42,7 @@ const Login = (props) => {
                 /*props.setLogIn()*/
                 localStorage.setItem('userToken',data.token)
                 localStorage.setItem('userId', data.userId)
+                navigate('/')
             } else {
                 setMessage(data.message)
             }
