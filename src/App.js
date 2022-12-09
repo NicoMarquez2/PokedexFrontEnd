@@ -3,6 +3,7 @@ import "./App.css";
 import PokeList from "./Components/PokeList";
 import PokeCard from "./Components/PokeCard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./Components/Login";
 
 function App() {
   const url = 'http://localhost:8080/pokemon'
@@ -100,6 +101,7 @@ function App() {
           />
 
           <Route path="/:id" element={<PokeCard list={list} />} />
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </React.Fragment>
