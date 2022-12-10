@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from "react";
 import SimplePoke from "./SimplePoke";
 import Header from "./Header";
+import CreateButton from "./CreateButton";
 import {Link} from "react-router-dom";
 
 
@@ -41,6 +42,9 @@ const PokeList = (props) => {
           order={order}
         />
         <div className="mainList">
+          {localStorage.userToken && (
+            <CreateButton/>
+          )}
           {auxList.filter((pokemon)=>pokemon.name.toLowerCase().includes(value.toLowerCase())).map((poke, index) => (
             <SimplePoke
               list={props.list}

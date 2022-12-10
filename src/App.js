@@ -5,6 +5,7 @@ import PokeCard from "./Components/PokeCard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
+import CreatePokemon from "./Components/CreatePokemon";
 
 function App() {
   const url = 'http://localhost:8080/pokemon'
@@ -13,6 +14,7 @@ function App() {
   const [types, setTypes] =useState([])
   const [movements, setMovements] =useState([])
   const [pokeToShow, setPokeToShow] = useState("");
+  const [userLogged, setUserLogged] = useState(false) 
 
   useEffect(() => {
     let aux = []
@@ -40,7 +42,6 @@ function App() {
           description: data.pokemons[i].name,
           id: data.pokemons[i].id,
         })
-        console.log(aux)
         setList(aux)
       })
     }
@@ -98,12 +99,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<PokeList list={list} getPokemon={getPokemon} />}
+            element={<PokeList list={list} getPokemon={getPokemon}/>}
           />
 
           <Route path="/:id" element={<PokeCard list={list} />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/create" element={<CreatePokemon/>}/>
         </Routes>
       </BrowserRouter>
     </React.Fragment>
