@@ -60,3 +60,25 @@ const PokeList = (props) => {
 };
 
 export default PokeList;
+
+
+/*
+const [state, setState] = useState({
+  name: '',
+  
+});
+
+handleChange = (e) => {
+  const { name, value } = e.target
+  this.setState({ [name]: value })
+}
+
+<label htmlFor="name">Name</label>
+<input name="name" type="text"
+ onChange={this.handleChange}
+  />
+
+  */
+
+  
+
