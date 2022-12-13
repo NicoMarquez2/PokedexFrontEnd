@@ -776,5 +776,51 @@ a:link, a:visited, a:active {
   text-decoration:none;
 }
 
+.auth{
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  height: 100vh;
+  width: 90vw;
+  margin-left: 5vw;
+  margin-top: 3vh;
+}
+.authForm{ 
+  display: flex;
+  flex-direction: column;
+  color: rgba(255, 0, 0, 0.700);
+  font-weight: 900;
+  gap: 3vh;
+  align-items: center;
+}
+.authHeader{
+  display: flex;
+  justify-content: space-between;
+}
+
+.authForm > input {
+  border-radius: 10px;
+  border-color: rgba(255, 0, 0, 0.700);
+  width: 70vw;
+}
+
+.authForm > button {
+  width: 30vw;
+}
+.authImg{
+  width: 30vw;
+  margin-left: 50vw;
+}
+
+.button{
+  border-radius: 10px;
+  background-color: rgba(255, 0, 0, 0.700);
+  font-weight: 900;
+}
+.buttonLogin{
+  position: absolute;
+  right: 6vw;
+  top: 2vh;
+}
 
 

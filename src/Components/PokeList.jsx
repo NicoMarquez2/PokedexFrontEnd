@@ -40,7 +40,13 @@ const PokeList = (props) => {
 
   return (
     <React.Fragment>
-      {localStorage.userToken ? <button onClick={handleLogOut}>LOGOUT</button> : <Link to = {"/login"}><button>LOGIN</button></Link>}
+      <div className="buttonLogin">
+        {localStorage.userToken ? 
+        <button className="button" onClick={handleLogOut}>LOGOUT</button> : 
+        <Link to = {"/login"}><button className="button">LOGIN</button></Link>}
+      </div>
+
+      
       <div className="listComponent">
         <Header
           changeOrder={changeOrder}

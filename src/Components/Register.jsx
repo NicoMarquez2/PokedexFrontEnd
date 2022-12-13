@@ -48,21 +48,29 @@ const Register = (props) => {
     }
 
     return(
-        <form className="registerForm" onSubmit={(e)=>e.preventDefault()}>
-            <label htmlFor="registerName">Name</label>
-            <input name="registerName" type="text"  onInput={handleName}/>
+        <div className="auth">
+            <div>
+                <Link to={"/login"}><img src="/Referencias/arrow-left.svg" /></Link>
+            </div>
+            <form className="authForm" onSubmit={(e)=>e.preventDefault()}>
+                <label htmlFor="registerName">Name</label>
+                <input name="registerName" type="text"  onInput={handleName}/>
 
-            <label htmlFor="registerEmail">E-mail</label>
-            <input name="registerEmail" type="mail"  onInput={handleEmail}/>
+                <label htmlFor="registerEmail">E-mail</label>
+                <input name="registerEmail" type="mail"  onInput={handleEmail}/>
 
-            <label htmlFor="registerPassword">Password</label>
-            <input name="registerPassword" type="password" onInput={handlePassword}/>
+                <label htmlFor="registerPassword">Password</label>
+                <input name="registerPassword" type="password" onInput={handlePassword}/>
 
-            <p>{createdMessage && createdMessage}</p>
+                <p>{createdMessage && createdMessage}</p>
 
-            <button type="submit" onClick={handleButton}>Register</button>
-            <Link to={"/login"}><button type="button">Back to LogIn</button></Link>
-        </form>
+                <button className="button" type="submit" onClick={handleButton}>Register</button>
+            </form>
+            <div>
+                <img className="authImg" src='/Referencias/colorPokeball.png'></img>
+            </div>           
+        </div>
+
     )
 }
 

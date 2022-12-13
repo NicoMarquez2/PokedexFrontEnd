@@ -194,10 +194,10 @@ const CreatePokemon = () => {
                     <option value="">Sword-Dance</option>
                 </select>
             </div>
-            <button type="button" onClick={handleButton}>Create</button>
+            <button type="button" className="button" onClick={handleButton}>Create</button>
         </form>
 
-        <Link to={'/'}><button>Back to home</button></Link>
+        <Link to={'/'}><button className="button">Back to home</button></Link>
       </div>
 
     )

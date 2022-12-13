@@ -51,22 +51,24 @@ const Login = (props) => {
 
     return(
 
-        <div>
-            <Link to = {"/register"}><button>REGISTER</button></Link>
-            <Link to={"/"}>
-                <img src="/Referencias/arrow-left.svg" className="arrow" />
-            </Link>
-            <form className="loginForm" onSubmit={(e)=>e.preventDefault()}>
+        <div className="auth">
+            <div className="authHeader">
+                <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
+                <Link to = {"/register"}><button className="button">REGISTER</button></Link>
+            </div>
+            <form className="authForm" onSubmit={(e)=>e.preventDefault()}>
                 <label htmlFor="loginEmail">E-mail</label>
                 <input name="loginEmail" type="mail" onInput={handleEmail}/>
 
                 <label htmlFor="loginPassword">Password</label>
                 <input name="loginPassword" type="password" onInput={handlePassword}/>
 
-                <button type="button" onClick={handleButton}>Log In</button>
+                <button type="button" className="button" onClick={handleButton}>Log In</button>
                 <p>{message && message}</p>
             </form>
-
+            <div>
+                <img className="authImg" src='/Referencias/colorPokeball.png'></img>
+            </div>    
         </div>
         
     )
