@@ -1,5 +1,6 @@
 import React, { useEffect, useState }  from "react";
-import { MultiSelect } from "react-multi-select-component";
+import { Link } from "react-router-dom";
+import MultiSelect from "react-multi-select-component"
 
 const options = [
     {label: "Ice" , value: "Ice"},
@@ -118,6 +119,7 @@ const CreatePokemon = () => {
 
 
     return(
+      <div>
         <form onSubmit={(e)=>e.preventDefault()}>
             <label htmlFor="name">Name</label>
             <input name="Name" type="text" onChange={handleName}/>
@@ -151,12 +153,11 @@ const CreatePokemon = () => {
 
             <label htmlFor="spd">spd</label>
             <input name="spd" type="text" onChange={handleSpd}/>
-            <div>
-                <span>Select types</span>
-                <MultiSelect multiple={true}>
-                    options = {options}
-                </MultiSelect>
-            </div>
+
+            <MultiSelect multiple={true}>
+              options = {options}
+            </MultiSelect>
+
             <div>
                 <span>Select movements</span>
                 <select>
@@ -185,6 +186,10 @@ const CreatePokemon = () => {
             </div>
             <button type="button" onClick={handleButton}>Create</button>
         </form>
+
+        <Link to={'/'}><button>Back to home</button></Link>
+      </div>
+
     )
 } 
 

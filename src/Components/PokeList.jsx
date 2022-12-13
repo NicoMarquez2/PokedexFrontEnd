@@ -2,15 +2,21 @@ import React, { useEffect, useState }  from "react";
 import SimplePoke from "./SimplePoke";
 import Header from "./Header";
 import CreateButton from "./CreateButton";
-import {Link} from "react-router-dom";
-
+import {Link, redirect} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const PokeList = (props) => {
   const [value, setValue] = useState("");
   const [order, setOrder] = useState("Letter");
   const [auxList,setAuxList] = useState([])
+  let navigate = useNavigate('')
 
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    localStorage.removeItem("userToken")
+    navigate('/')
+  }
 
   function handleChange(e) {
     setValue(e.target.value);
@@ -34,7 +40,7 @@ const PokeList = (props) => {
 
   return (
     <React.Fragment>
-      <Link to = {"/login"}><button>LOGIN</button></Link>
+      {localStorage.userToken ? <button onClick={handleLogOut}>LOGOUT</button> : <Link to = {"/login"}><button>LOGIN</button></Link>}
       <div className="listComponent">
         <Header
           changeOrder={changeOrder}
