@@ -1,4 +1,26 @@
 import React, { useEffect, useState }  from "react";
+import { MultiSelect } from "react-multi-select-component";
+
+const options = [
+    {label: "Ice" , value: "Ice"},
+    {label: "Dark" , value: "Dark"},
+    {label: "Fairy" , value: "Fairy"},
+    {label: "Fighting" , value: "Fighting"},
+    {label: "Ground" , value: "Ground"},
+    {label: "Dragon" , value: "Dragon"},
+    {label: "Rock" , value: "Rock"},
+    {label: "Water" , value:"Water"},
+    {label: "Electric", value: "Electric"},
+    {label: "Pyschic", value: "Pyschic"},
+    {label: "Ghost", value: "Ghost"},
+    {label: "Normal", value: "Normal"},
+    {label: "Fire", value: "Fire"},
+    {label: "Bug", value: "Bug"},
+    {label: "Grass", value: "Grass"},
+    {label: "Steel", value: "Steel"},
+    {label: "Poison", value: "Poison"},
+    {label: "Flying", value: "Flying"}
+  ]
 
 const CreatePokemon = () => {
     
@@ -13,6 +35,8 @@ const CreatePokemon = () => {
     const [satk, setSatk] = useState(0)
     const [sdef, setSdef] = useState(0)
     const [spd, setSpd] = useState(0)
+    const [types, setTypes] = useState([])
+    const [movements, setMovements] = useState([])
 
 
      const handleName = (e) => {
@@ -64,6 +88,14 @@ const CreatePokemon = () => {
         e.preventDefault()
         setSpd(e.target.value)
       }
+      const handleTypes = (e) => {
+        e.preventDefault()
+        setTypes(e.target.value)
+      }
+      const handleMovements = (e) => {
+        e.preventDefault()
+        setMovements(e.target.value)
+      }
       
       const handleButton = async () => {
         let pokemon = {
@@ -78,9 +110,12 @@ const CreatePokemon = () => {
             satk: satk,
             sdef: sdef,
             spd: spd
+
         }
         console.log(pokemon)
       }
+
+
 
     return(
         <form onSubmit={(e)=>e.preventDefault()}>
@@ -117,16 +152,36 @@ const CreatePokemon = () => {
             <label htmlFor="spd">spd</label>
             <input name="spd" type="text" onChange={handleSpd}/>
             <div>
-                <span>Select movements</span>
-                <select></select>
-                <select></select>
+                <span>Select types</span>
+                <MultiSelect multiple={true}>
+                    options = {options}
+                </MultiSelect>
             </div>
             <div>
-                <span>Select types</span>
+                <span>Select movements</span>
                 <select>
-                    <option value="">TIPO</option>
+                    <option value="">Razor-wind</option>
+                    <option value="">Pound</option>
+                    <option value="">Gust</option>
+                    <option value="">Mega-Punch</option>
+                    <option value="">Transform</option>
+                    <option value="">Fire-Punch</option>
+                    <option value="">Ice-Punch</option>
+                    <option value="">Pay-Day</option>
+                    <option value="">Sword-Dance</option>
                 </select>
-                <select></select>
+                <select>
+                    <option value="">Empty</option>
+                    <option value="">Razor-wind</option>
+                    <option value="">Pound</option>
+                    <option value="">Gust</option>
+                    <option value="">Mega-Punch</option>
+                    <option value="">Transform</option>
+                    <option value="">Fire-Punch</option>
+                    <option value="">Ice-Punch</option>
+                    <option value="">Pay-Day</option>
+                    <option value="">Sword-Dance</option>
+                </select>
             </div>
             <button type="button" onClick={handleButton}>Create</button>
         </form>
