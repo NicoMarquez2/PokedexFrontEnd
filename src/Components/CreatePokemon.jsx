@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from "react";
 import { Link } from "react-router-dom";
-import MultiSelect from "react-multi-select-component"
+import {MultiSelect} from "react-multi-select-component"
 
 const options = [
     {label: "Ice" , value: "Ice"},
@@ -21,7 +21,7 @@ const options = [
     {label: "Steel", value: "Steel"},
     {label: "Poison", value: "Poison"},
     {label: "Flying", value: "Flying"}
-  ]
+  ];
 
 const CreatePokemon = () => {
     
@@ -38,6 +38,11 @@ const CreatePokemon = () => {
     const [spd, setSpd] = useState(0)
     const [types, setTypes] = useState([])
     const [movements, setMovements] = useState([])
+    const [isDiabled, setIsDisable] = useState(false)
+    
+    useEffect(()=> {
+        if (types.lenght > 2 ) setIsDisable(true)
+        },[types])
 
 
      const handleName = (e) => {
@@ -115,6 +120,7 @@ const CreatePokemon = () => {
         }
         console.log(pokemon)
       }
+      
 
 
 
@@ -154,9 +160,13 @@ const CreatePokemon = () => {
             <label htmlFor="spd">spd</label>
             <input name="spd" type="text" onChange={handleSpd}/>
 
-            <MultiSelect multiple={true}>
-              options = {options}
-            </MultiSelect>
+            <MultiSelect options = {options}
+              value={types}
+              onChange = {setTypes}
+              disabled = {isDiabled}
+              />
+              
+            
 
             <div>
                 <span>Select movements</span>
