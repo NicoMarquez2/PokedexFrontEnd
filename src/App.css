@@ -802,7 +802,7 @@ a:link, a:visited, a:active {
   margin-top: -15px;
 }
 
-.authForm > input select {
+.authForm > input {
   border-radius: 10px;
   border-color: rgba(255, 0, 0, 0.700);
   width: 70vw;
@@ -813,7 +813,8 @@ a:link, a:visited, a:active {
 }
 .authImg{
   width: 30vw;
-  margin-left: 50vw;
+  margin-left: 30vw;
+  margin-top: 4.5vw;
 }
 
 .button{
@@ -838,16 +839,88 @@ a:link, a:visited, a:active {
   display: grid;
   font-size: smaller;
   grid-template-areas: 
-  'letters letters'
-  'numberss numberss';
+  'letters'
+  'numberss'
+  'select';
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 30% 40% 20%;
 }
 .letters{
   grid-area: letters;
+  display: flex;
+  flex-direction: column;
+  height: 18vh;
 }
 .numbers{
   grid-area: numberss;
+  display: grid;
+  height: 19vh;
+  grid-template-areas:
+  'we he' 
+  'number1 number2'
+  'hp atk'
+  'number3 number4'
+  'def satk'
+  'number5 number6'
+  'sdef spd'
+  'number7 number8';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.number1{
+  grid-area: number1;
+  width: 42vw;
+}
+.number2{
+  grid-area: number2;
+  width: 42vw;
+}
+.number3{
+  grid-area: number3;
+  width: 42vw;
+}
+.number4{
+  grid-area: number4;
+  width: 42vw;
+}
+.number5{
+  grid-area: number5;
+  width: 42vw;
+}
+.number6{
+  grid-area: number6;
+  width: 42vw;
+}
+.number7{
+  grid-area: number7;
+  width: 42vw;
+}
+.number8{
+  grid-area: number8;
+  width: 42vw;
+}
+.select{
+  grid-area: select;
+  width: 90vw;
+  height: 12vh;
+  margin-top: 12px;
+  display: grid;
+  grid-template-areas: 
+  'selectT selectM';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.selectT{
+  grid-area: selectT;
+}
+.selectM{
+  grid-area: selectM;
+}
+.buttonCreate{
+  border-radius: 10px;
+  background-color: rgba(255, 0, 0, 0.700);
+  font-weight: 900;
+  margin-bottom: 10vh;
 }
 .createForm input{
   border-radius: 10px;

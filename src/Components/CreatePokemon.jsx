@@ -38,17 +38,17 @@ const CreatePokemon = () => {
     const [spd, setSpd] = useState(0)
     const [types, setTypes] = useState([])
     const [movements, setMovements] = useState([])
-    const [isDisabled, setIsDisabled] = useState(false)
+    /*const [isDisabled, setIsDisabled] = useState(false)*/
 
      
     
-    useEffect(()=> {
+    /*useEffect(()=> {
         console.log(types)
         if (types.lenght > 2 ) setIsDisabled(true)
         console.log(isDisabled)
-        },[types])
+        },[types])*/
 
-    const selectTypes= (opt) => {
+    /*const selectTypes= (opt) => {
       if (types.length > 2 ){
         return
       }else {
@@ -56,7 +56,7 @@ const CreatePokemon = () => {
         arr.push(opt[0].value)
         setTypes(arr)
       }
-    }
+    }*/
 
 
      const handleName = (e) => {
@@ -161,52 +161,53 @@ const CreatePokemon = () => {
             </div>
 
             <div className="numbers">
-              <label htmlFor="weight">WEIGHT</label>
-              <input name="weight" type="text" onChange={handleWeight}/>
+              <label  htmlFor="weight">WEIGHT</label>
+              <input className="number1" name="weight" type="text" onChange={handleWeight}/>
 
-              <label htmlFor="height">HEIGHT</label>
-              <input name="height" type="text" onChange={handleHeight}/>
+              <label  htmlFor="height">HEIGHT</label>
+              <input className="number2" name="height" type="text" onChange={handleHeight}/>
 
-              <label htmlFor="hp">HP</label>
-              <input name="hp" type="text" onChange={handleHp}/>
+              <label  htmlFor="hp">HP</label>
+              <input className="number3" name="hp" type="text" onChange={handleHp}/>
 
-              <label htmlFor="atk">ATK</label>
-              <input name="atk" type="text" onChange={handleAtk}/>
+              <label  htmlFor="atk">ATK</label>
+              <input className="number4" name="atk" type="text" onChange={handleAtk}/>
 
-              <label htmlFor="def">DEF</label>
-              <input name="def" type="text" onChange={handleDef}/>
+              <label  htmlFor="def">DEF</label>
+              <input className="number5" name="def" type="text" onChange={handleDef}/>
               
-              <label htmlFor="satk">SATK</label>
-              <input name="satk" type="text" onChange={handleSatk}/>
+              <label  htmlFor="satk">SATK</label>
+              <input className="number6" name="satk" type="text" onChange={handleSatk}/>
 
-              <label htmlFor="sdef">SDEF</label>
-              <input name="sdef" type="text" onChange={handleSdef}/>
+              <label  htmlFor="sdef">SDEF</label>
+              <input className="number7" name="sdef" type="text" onChange={handleSdef}/>
 
-              <label htmlFor="spd">SPD</label>
-              <input name="spd" type="text" onChange={handleSpd}/>
+              <label  htmlFor="spd">SPD</label>
+              <input className="number8" name="spd" type="text" onChange={handleSpd}/>
             </div>
 
-            <div>
-              <div>
+            <div className="select">
+              <div className="selectT">
                 <span>Select Types</span>
                 <MultiSelect options = {options}
                   value={types}
                   onChange = {setTypes}
-                  disabled = {(types.length > 2) ? true : false}
+                  /*disabled = {(types.length > 2) ? true : false}*/
+                  selectionLimit="2"
                   />
               </div>
-              {/*<div>
+              <div className="selectM">
                   <span >Select Movements</span>
                   <MultiSelect options = {options}
                     value={types}
                     onChange = {setTypes}
-                    disabled = {isDisabled}
+                    /*disabled = {isDisabled}*/
                     />
-              </div>*/}
-
+              </div>
             </div>
-            <button type="button" className="button" onClick={handleButton}>Create</button>
+            <button className="buttonCreate" type="button" onClick={handleButton}>Create</button>
         </form>
+        <img className="authImg" src='/Referencias/colorPokeball.png'></img>
       </div>
 
     )
