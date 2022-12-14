@@ -797,8 +797,12 @@ a:link, a:visited, a:active {
   display: flex;
   justify-content: space-between;
 }
+.authHeader div{
+  font-size: x-small;
+  margin-top: -15px;
+}
 
-.authForm > input {
+.authForm > input select {
   border-radius: 10px;
   border-color: rgba(255, 0, 0, 0.700);
   width: 70vw;
@@ -821,6 +825,33 @@ a:link, a:visited, a:active {
   position: absolute;
   right: 6vw;
   top: 2vh;
+}
+.createGeneral{
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  width: 90vw;
+  margin-left: 5vw;
+  margin-top: 3vh;
+}
+.createForm{
+  display: grid;
+  font-size: smaller;
+  grid-template-areas: 
+  'letters letters'
+  'numberss numberss';
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.letters{
+  grid-area: letters;
+}
+.numbers{
+  grid-area: numberss;
+}
+.createForm input{
+  border-radius: 10px;
+  border-color: rgba(255, 0, 0, 0.700);
 }
 
 

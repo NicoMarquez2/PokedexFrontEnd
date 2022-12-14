@@ -38,11 +38,25 @@ const CreatePokemon = () => {
     const [spd, setSpd] = useState(0)
     const [types, setTypes] = useState([])
     const [movements, setMovements] = useState([])
-    const [isDiabled, setIsDisable] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(false)
+
+     
     
     useEffect(()=> {
-        if (types.lenght > 2 ) setIsDisable(true)
+        console.log(types)
+        if (types.lenght > 2 ) setIsDisabled(true)
+        console.log(isDisabled)
         },[types])
+
+    const selectTypes= (opt) => {
+      if (types.length > 2 ){
+        return
+      }else {
+        let arr = types
+        arr.push(opt[0].value)
+        setTypes(arr)
+      }
+    }
 
 
      const handleName = (e) => {
@@ -120,84 +134,79 @@ const CreatePokemon = () => {
         }
         console.log(pokemon)
       }
+
+      
       
 
 
 
     return(
-      <div>
-        <form onSubmit={(e)=>e.preventDefault()}>
-            <label htmlFor="name">Name</label>
-            <input name="Name" type="text" onChange={handleName}/>
+      <div className="createGeneral">
+        <div className="authHeader">
+                <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
+                <div>
+                  <h1>Create Pokemon</h1>
+                </div>
+            </div>
+        <form className="createForm" onSubmit={(e)=>e.preventDefault()}>
+            <div className="letters">
+              <label htmlFor="name">NAME</label>
+              <input name="Name" type="text" onChange={handleName}/>
 
-            <label htmlFor="img">img</label>
-            <input name="img" type="text" onChange={handleImg}/>
+              <label htmlFor="img">IMG URL</label>
+              <input name="img" type="text" onChange={handleImg}/>
 
-            <label htmlFor="weight">weight</label>
-            <input name="weight" type="text" onChange={handleWeight}/>
+              <label htmlFor="description">DESCRIPTION</label>
+              <input name="description" type="text" onChange={handleDescription}/>
+            </div>
 
-            <label htmlFor="height">height</label>
-            <input name="height" type="text" onChange={handleHeight}/>
+            <div className="numbers">
+              <label htmlFor="weight">WEIGHT</label>
+              <input name="weight" type="text" onChange={handleWeight}/>
 
-            <label htmlFor="description">description</label>
-            <input name="description" type="text" onChange={handleDescription}/>
+              <label htmlFor="height">HEIGHT</label>
+              <input name="height" type="text" onChange={handleHeight}/>
 
-            <label htmlFor="hp">hp</label>
-            <input name="hp" type="text" onChange={handleHp}/>
+              <label htmlFor="hp">HP</label>
+              <input name="hp" type="text" onChange={handleHp}/>
 
-            <label htmlFor="atk">atk</label>
-            <input name="atk" type="text" onChange={handleAtk}/>
+              <label htmlFor="atk">ATK</label>
+              <input name="atk" type="text" onChange={handleAtk}/>
 
-            <label htmlFor="def">def</label>
-            <input name="def" type="text" onChange={handleDef}/>
-            
-            <label htmlFor="satk">satk</label>
-            <input name="satk" type="text" onChange={handleSatk}/>
-
-            <label htmlFor="sdef">sdef</label>
-            <input name="sdef" type="text" onChange={handleSdef}/>
-
-            <label htmlFor="spd">spd</label>
-            <input name="spd" type="text" onChange={handleSpd}/>
-
-            <MultiSelect options = {options}
-              value={types}
-              onChange = {setTypes}
-              disabled = {isDiabled}
-              />
+              <label htmlFor="def">DEF</label>
+              <input name="def" type="text" onChange={handleDef}/>
               
-            
+              <label htmlFor="satk">SATK</label>
+              <input name="satk" type="text" onChange={handleSatk}/>
+
+              <label htmlFor="sdef">SDEF</label>
+              <input name="sdef" type="text" onChange={handleSdef}/>
+
+              <label htmlFor="spd">SPD</label>
+              <input name="spd" type="text" onChange={handleSpd}/>
+            </div>
 
             <div>
-                <span>Select movements</span>
-                <select>
-                    <option value="">Razor-wind</option>
-                    <option value="">Pound</option>
-                    <option value="">Gust</option>
-                    <option value="">Mega-Punch</option>
-                    <option value="">Transform</option>
-                    <option value="">Fire-Punch</option>
-                    <option value="">Ice-Punch</option>
-                    <option value="">Pay-Day</option>
-                    <option value="">Sword-Dance</option>
-                </select>
-                <select>
-                    <option value="">Empty</option>
-                    <option value="">Razor-wind</option>
-                    <option value="">Pound</option>
-                    <option value="">Gust</option>
-                    <option value="">Mega-Punch</option>
-                    <option value="">Transform</option>
-                    <option value="">Fire-Punch</option>
-                    <option value="">Ice-Punch</option>
-                    <option value="">Pay-Day</option>
-                    <option value="">Sword-Dance</option>
-                </select>
+              <div>
+                <span>Select Types</span>
+                <MultiSelect options = {options}
+                  value={types}
+                  onChange = {setTypes}
+                  disabled = {(types.length > 2) ? true : false}
+                  />
+              </div>
+              {/*<div>
+                  <span >Select Movements</span>
+                  <MultiSelect options = {options}
+                    value={types}
+                    onChange = {setTypes}
+                    disabled = {isDisabled}
+                    />
+              </div>*/}
+
             </div>
             <button type="button" className="button" onClick={handleButton}>Create</button>
         </form>
-
-        <Link to={'/'}><button className="button">Back to home</button></Link>
       </div>
 
     )
