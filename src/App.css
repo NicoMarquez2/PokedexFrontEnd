@@ -912,10 +912,33 @@ a:link, a:visited, a:active {
 }
 .selectT{
   grid-area: selectT;
+  width: 44vw;
 }
 .selectM{
   grid-area: selectM;
+  width: 44vw;
 }
+.multiselectContainer{
+  border-radius: 30px;
+}
+.searchBox { /*// To change search box element look*/
+  border: none;
+  font-size: 10px;
+  max-height: 10px;
+}
+.inputField{ /*// To change input field position or margin*/
+    margin: 5px;
+}
+.chips { /*// To change css chips(Selected options)*/
+  background: rgba(255, 0, 0, 0.700);
+}
+.optionContainer { /*// To change css for option container */
+  border: 2px solid;
+}
+.option { /*// To change css for dropdown options*/
+  color: rgba(255, 0, 0, 0.700);
+}
+
 .buttonCreate{
   border-radius: 10px;
   background-color: rgba(255, 0, 0, 0.700);
@@ -926,5 +949,36 @@ a:link, a:visited, a:active {
   border-radius: 10px;
   border-color: rgba(255, 0, 0, 0.700);
 }
+.create{
+  width: 90%;
+  margin-bottom: 7%;
+  height: auto;
+  border: 1px solid;
+  border-radius: 12px;
+  display: flex;
+  border-color: black;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: white !important;
+}
+.spanCreate{
+  font-size: 12px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: black;
+  background-color: rgba(255, 0, 0, 0.700);
+}
+.pokeIdCreate{
+  color: black;
+  width: 50%;
+  font-size: 12px;
+  position: relative;
+  border-radius: 15px 15px 0px 0px;
+  left: 50%;
+  background-color: white !important;
+}
+
 
 

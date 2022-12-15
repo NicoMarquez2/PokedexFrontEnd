@@ -1,26 +1,38 @@
 import React, { useEffect, useState }  from "react";
 import { Link } from "react-router-dom";
-import {MultiSelect} from "react-multi-select-component"
+import Multiselect from 'multiselect-react-dropdown';
 
-const options = [
-    {label: "Ice" , value: "Ice"},
-    {label: "Dark" , value: "Dark"},
-    {label: "Fairy" , value: "Fairy"},
-    {label: "Fighting" , value: "Fighting"},
-    {label: "Ground" , value: "Ground"},
-    {label: "Dragon" , value: "Dragon"},
-    {label: "Rock" , value: "Rock"},
-    {label: "Water" , value:"Water"},
-    {label: "Electric", value: "Electric"},
-    {label: "Pyschic", value: "Pyschic"},
-    {label: "Ghost", value: "Ghost"},
-    {label: "Normal", value: "Normal"},
-    {label: "Fire", value: "Fire"},
-    {label: "Bug", value: "Bug"},
-    {label: "Grass", value: "Grass"},
-    {label: "Steel", value: "Steel"},
-    {label: "Poison", value: "Poison"},
-    {label: "Flying", value: "Flying"}
+
+const typeOptions = [
+    {name: "Ice" , id: 1},
+    {name: "Dark" , id: 2},
+    {name: "Fairy" , id: 3},
+    {name: "Fighting" , id: 4},
+    {name: "Ground" , id: 5},
+    {name: "Dragon" , id: 6},
+    {name: "Rock" , id: 7},
+    {name: "Water" , id: 8},
+    {name: "Electric", id: 9},
+    {name: "Pyschic", id: 10},
+    {name: "Ghost", id: 11},
+    {name: "Normal", id: 12},
+    {name: "Fire", id: 13},
+    {name: "Bug", id: 14},
+    {name: "Grass", id: 15},
+    {name: "Steel", id: 16},
+    {name: "Poison", id: 17},
+    {name: "Flying", id: 18}
+  ];
+  const movementsOptions = [
+    {name: "Razor-wind" , id: 1},
+    {name: "Pound" , id: 2},
+    {name: "Gust" , id: 3},
+    {name: "Mega-punch" , id: 4},
+    {name: "Transform" , id: 5},
+    {name: "Fire-punch" , id: 6},
+    {name: "Ice-punch" , id: 7},
+    {name: "Pay-day" , id: 8},
+    {name: "Swords-dance", id: 9}
   ];
 
 const CreatePokemon = () => {
@@ -38,26 +50,14 @@ const CreatePokemon = () => {
     const [spd, setSpd] = useState(0)
     const [types, setTypes] = useState([])
     const [movements, setMovements] = useState([])
-    /*const [isDisabled, setIsDisabled] = useState(false)*/
 
-     
-    
-    /*useEffect(()=> {
-        console.log(types)
-        if (types.lenght > 2 ) setIsDisabled(true)
-        console.log(isDisabled)
-        },[types])*/
 
-    /*const selectTypes= (opt) => {
-      if (types.length > 2 ){
-        return
-      }else {
-        let arr = types
-        arr.push(opt[0].value)
-        setTypes(arr)
-      }
-    }*/
-
+    const onSelect = (selectedList, selectedItem) => {
+  
+    }
+    const onRemove = (selectedList, removedItem) => {
+      
+    }
 
      const handleName = (e) => {
         e.preventDefault()
@@ -136,9 +136,6 @@ const CreatePokemon = () => {
       }
 
       
-      
-
-
 
     return(
       <div className="createGeneral">
@@ -189,21 +186,26 @@ const CreatePokemon = () => {
             <div className="select">
               <div className="selectT">
                 <span>Select Types</span>
-                <MultiSelect options = {options}
-                  value={types}
-                  onChange = {setTypes}
-                  /*disabled = {(types.length > 2) ? true : false}*/
+                <Multiselect
+                  options={typeOptions} // Options to display in the dropdown
+                  onSelect={onSelect} // Function will trigger on select event
+                  onRemove={onRemove} // Function will trigger on remove event
+                  displayValue="name" // Property name to display in the dropdown options
                   selectionLimit="2"
-                  />
+                />
               </div>
               <div className="selectM">
-                  <span >Select Movements</span>
-                  <MultiSelect options = {options}
-                    value={types}
-                    onChange = {setTypes}
-                    /*disabled = {isDisabled}*/
-                    />
+                <span>Select Movements</span>
+                <Multiselect
+                  options={movementsOptions} // Options to display in the dropdown
+                  onSelect={onSelect} // Function will trigger on select event
+                  onRemove={onRemove} // Function will trigger on remove event
+                  displayValue="name" // Property name to display in the dropdown options
+                  selectionLimit="2"
+                />
               </div>
+
+              
             </div>
             <button className="buttonCreate" type="button" onClick={handleButton}>Create</button>
         </form>
