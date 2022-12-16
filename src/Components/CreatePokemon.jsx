@@ -1,7 +1,8 @@
 import React, { useEffect, useState }  from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import Multiselect from 'multiselect-react-dropdown';
 
+const url = 'http://localhost:8080/pokemon' 
 
 const typeOptions = [
     {name: "Ice" , id: 1},
@@ -130,9 +131,23 @@ const CreatePokemon = () => {
             satk: satk,
             sdef: sdef,
             spd: spd
-
         }
-        console.log(pokemon)
+        let pokemonTypes = types
+        let pokemonMovements = movements
+
+        console.log(pokemonTypes)
+        console.log(pokemonMovements)
+        console.log(({pokemon, pokemonTypes, pokemonMovements}))
+        await fetch(url,{
+          method: 'POST',
+          body: JSON.stringify({pokemon, pokemonTypes, pokemonMovements}),
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'UserId': localStorage.getItem('userId'),
+              'UserToken': localStorage.getItem('userToken')
+          }
+        })
       }
 
       
@@ -188,7 +203,7 @@ const CreatePokemon = () => {
                 <span>Select Types</span>
                 <Multiselect
                   options={typeOptions} // Options to display in the dropdown
-                  onSelect={onSelect} // Function will trigger on select event
+                  onSelect={setTypes} // Function will trigger on select event
                   onRemove={onRemove} // Function will trigger on remove event
                   displayValue="name" // Property name to display in the dropdown options
                   selectionLimit="2"
@@ -198,7 +213,7 @@ const CreatePokemon = () => {
                 <span>Select Movements</span>
                 <Multiselect
                   options={movementsOptions} // Options to display in the dropdown
-                  onSelect={onSelect} // Function will trigger on select event
+                  onSelect={setMovements} // Function will trigger on select event
                   onRemove={onRemove} // Function will trigger on remove event
                   displayValue="name" // Property name to display in the dropdown options
                   selectionLimit="2"

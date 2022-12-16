@@ -918,8 +918,11 @@ a:link, a:visited, a:active {
   grid-area: selectM;
   width: 44vw;
 }
-.multiselectContainer{
+.multiselectContainer {
   border-radius: 30px;
+}
+.multiselectContainer > .chip{
+  background-color: red;
 }
 .searchBox { /*// To change search box element look*/
   border: none;
@@ -929,11 +932,20 @@ a:link, a:visited, a:active {
 .inputField{ /*// To change input field position or margin*/
     margin: 5px;
 }
-.chips { /*// To change css chips(Selected options)*/
-  background: rgba(255, 0, 0, 0.700);
+.chip {
+  align-items: center;
+  background: red !important;
+  border-radius: 11px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 13px;
+  line-height: 19px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 4px 10px;
 }
 .optionContainer { /*// To change css for option container */
-  border: 2px solid;
+  border: 10px solid;
 }
 .option { /*// To change css for dropdown options*/
   color: rgba(255, 0, 0, 0.700);
@@ -980,5 +992,13 @@ a:link, a:visited, a:active {
   background-color: white !important;
 }
 
+.groupHeading{
+  color: rebeccapurple;
+  background-color: #74cb48;
+}
+.singleChip {
+  white-space: nowrap;
+  background-color: red; 
+}
 
 
