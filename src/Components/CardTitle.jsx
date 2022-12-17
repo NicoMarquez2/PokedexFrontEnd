@@ -7,18 +7,18 @@ const CardTitle = ({pokemon, /*pokemonIdx*/ fixId, list, id})=>{
   const [pokemonIdx, setpokemonIdx] = useState()
   
   //console.log(list)
-  useEffect(() => {
-    console.log("KLAJDALKSD")
+  /*useEffect(() => {
+    console.log("PRIMER USE EFFECT")
     console.log(list)
       list.find((element, idx) => {
         console.log(idx)
         console.log(element)
         setpokemonIdx(idx);
       })
-  },[])
+  },[])*/
   
 useEffect(() => {
-  console.log("XDXDXDXD")
+  console.log("SEGUNDO USE EFFECT")
   list.find((element, idx) => {
     //console.log(idx)
     setpokemonIdx(idx);

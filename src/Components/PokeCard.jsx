@@ -19,38 +19,40 @@ const PokeCard = (props) => {
     setpokemon(pokemon);
   }, [props.list, id]);*/
   
-  useEffect(() => {
-    let aux = []
-    async function fetchData(){
-      await fetch('http://localhost:8080/pokemon')
-      .then((response)=>response.json())
-      .then((data) => {
-        /*setPokemons(data.pokemons)
-        setTypes(data.pokemonTypes)
-        setMovements(data.pokemonMovements)*/
-        for(let i = 0; i<=data.pokemons.length - 1; i++)
-        aux.push({
-          name: data.pokemons[i].name,
-          image: data.pokemons[i].img,
-          hp: data.pokemons[i].hp,
-          atk: data.pokemons[i].atk,
-          def: data.pokemons[i].def,
-          satk: data.pokemons[i].satk,
-          sdef: data.pokemons[i].sdef,
-          spd: data.pokemons[i].spd,
-          weigth: data.pokemons[i].weight,
-          heigth: data.pokemons[i].height,
-          moves: data.pokemonMovements[0].filter(move => move.id_pokemon == data.pokemons[i].id).map(move => move.movement),
-          type: data.pokemonTypes[0].filter(type => type.id_pokemon == data.pokemons[i].id).map(type => type.type),
-          description: data.pokemons[i].description,
-          id: data.pokemons[i].id,
-        })
-        setList(aux)
-      })
-    }
-    fetchData()
-  },[])
+  function doNothing(){
+    return
+  }
 
+  useEffect(() => {
+    props.list ? doNothing(): 
+      console.log("ENTRO IF PORQUE NO LLEGA LISTA Y LA HAGO PA")
+      let aux = []
+      async function fetchData(){
+        await fetch('http://localhost:8080/pokemon')
+        .then((response)=>response.json())
+        .then((data) => {
+          for(let i = 0; i<=data.pokemons.length - 1; i++)
+          aux.push({
+            name: data.pokemons[i].name,
+            image: data.pokemons[i].img,
+            hp: data.pokemons[i].hp,
+            atk: data.pokemons[i].atk,
+            def: data.pokemons[i].def,
+            satk: data.pokemons[i].satk,
+            sdef: data.pokemons[i].sdef,
+            spd: data.pokemons[i].spd,
+            weigth: data.pokemons[i].weight,
+            heigth: data.pokemons[i].height,
+            moves: data.pokemonMovements[0].filter(move => move.id_pokemon == data.pokemons[i].id).map(move => move.movement),
+            type: data.pokemonTypes[0].filter(type => type.id_pokemon == data.pokemons[i].id).map(type => type.type),
+            description: data.pokemons[i].description,
+            id: data.pokemons[i].id,
+          })
+          setList(aux)
+        })
+      }
+      fetchData()
+  },[])
 
   useEffect(() => {
     let aux 
@@ -58,9 +60,6 @@ const PokeCard = (props) => {
       await fetch(url)
       .then((response)=>response.json())
       .then((data) => {
-        /*setPokemons(data.pokemon)
-        setTypes(data.pokemonTypes)
-        setMovements(data.pokemonMovements)*/
         console.log(data.pokemon[0])
         aux ={
           name: data.pokemon[0].name,
@@ -79,15 +78,9 @@ const PokeCard = (props) => {
           id: data.pokemon[0].id,
         }
         setpokemon(aux)
-        /*props.list.find((element, idx) => {
-          console.log(idx)
-          setpokemonIdx(idx);
-          return element.id == id;
-        })*/
       })
     }
     fetchData()
-    //console.log(props.list)
   },[id])
 
   function fixId(pokeId) {
@@ -116,7 +109,7 @@ const PokeCard = (props) => {
               pokemon={pokemon}
               //pokemonIdx={pokemonIdx}
               fixId={fixId}
-              list={list}
+              list={list ? list : props.list}
               id={id}/>
           </div>
 
