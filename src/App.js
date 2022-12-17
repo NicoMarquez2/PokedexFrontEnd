@@ -107,7 +107,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/create" element={<CreatePokemon/>}/>
-          <Route path="/compare" element={<Compare/>}/>
+          <Route path="/compare" element={<Compare list={list}/>}/>
         </Routes>
       </BrowserRouter>
     </React.Fragment>

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CardTitle = ({pokemon, pokemonIdx, fixId, list})=>{
+  console.log(list)
+  console.log(pokemonIdx)
     return(
         <React.Fragment>      
             <div>

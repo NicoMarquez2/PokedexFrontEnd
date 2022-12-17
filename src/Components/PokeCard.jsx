@@ -7,10 +7,10 @@ import CardTitle from "./CardTitle";
 const PokeCard = (props) => {
   const [pokemon, setpokemon] = useState();
   const [pokemonIdx, setpokemonIdx] = useState();
+  const [list, setList] = useState([])
   const params = useParams();
   const id = params.id;
   const url = `http://localhost:8080/pokemon/${id}`
-
   /*useEffect(() => {
     const pokemon = props.list.find((element, idx) => {
       setpokemonIdx(idx);
@@ -18,10 +18,41 @@ const PokeCard = (props) => {
     });
     setpokemon(pokemon);
   }, [props.list, id]);*/
+  
 
   useEffect(() => {
     let aux 
     async function fetchData(){
+      await fetch('http://localhost:8080/pokemon')
+      .then((response)=>response.json())
+      .then((data) => {
+        let aux = []
+        /*setPokemons(data.pokemons)
+        setTypes(data.pokemonTypes)
+        setMovements(data.pokemonMovements)*/
+        console.log(data)
+        for(let i = 0; i<=data.pokemons.length - 1; i++)
+        {
+          console.log(data.pokemons[i])
+          aux.push({
+            name: data.pokemons[i].name,
+            image: data.pokemons[i].img,
+            hp: data.pokemons[i].hp,
+            atk: data.pokemons[i].atk,
+            def: data.pokemons[i].def,
+            satk: data.pokemons[i].satk,
+            sdef: data.pokemons[i].sdef,
+            spd: data.pokemons[i].spd,
+            weigth: data.pokemons[i].weight,
+            heigth: data.pokemons[i].height,
+            moves: data.pokemonMovements[0].filter(move => move.id_pokemon == data.pokemons[i].id).map(move => move.movement),
+            type: data.pokemonTypes[0].filter(type => type.id_pokemon == data.pokemons[i].id).map(type => type.type),
+            description: data.pokemons[i].description,
+            id: data.pokemons[i].id,
+          })
+        } 
+        setList(aux)
+      })
       await fetch(url)
       .then((response)=>response.json())
       .then((data) => {
@@ -46,12 +77,15 @@ const PokeCard = (props) => {
           id: data.pokemon[0].id,
         }
         setpokemon(aux)
-        setpokemonIdx(id)
+        list.find((element, idx) => {
+          setpokemonIdx(idx);
+          return element.id == id;
+        })
       })
     }
     fetchData()
-    console.log(props.list)
-  },[])
+    console.log(list)
+  },[id])
 
   function fixId(pokeId) {
     if (pokeId < 10) {
@@ -79,7 +113,7 @@ const PokeCard = (props) => {
               pokemon={pokemon}
               pokemonIdx={pokemonIdx}
               fixId={fixId}
-              list={props.list}/>
+              list={list}/>
           </div>
 
           <img

@@ -60,6 +60,11 @@ const CreatePokemon = () => {
       
     }
 
+    function isValidNumber(number){
+      if(number > 255) return false
+      else return true
+    }
+
      const handleName = (e) => {
         e.preventDefault()
         setName(e.target.value)
@@ -150,8 +155,6 @@ const CreatePokemon = () => {
         })
       }
 
-      
-
     return(
       <div className="createGeneral">
         <div className="authHeader">
@@ -169,33 +172,33 @@ const CreatePokemon = () => {
               <input name="img" type="text" onChange={handleImg}/>
 
               <label htmlFor="description">DESCRIPTION</label>
-              <input name="description" type="text" onChange={handleDescription}/>
+              <textarea name="description" type="text" maxLength={255} onChange={handleDescription}/>
             </div>
 
             <div className="numbers">
               <label  htmlFor="weight">WEIGHT</label>
-              <input className="number1" name="weight" type="text" onChange={handleWeight}/>
+              <input className="number1" name="weight" type="number" onChange={handleWeight}/>
 
               <label  htmlFor="height">HEIGHT</label>
-              <input className="number2" name="height" type="text" onChange={handleHeight}/>
+              <input className="number2" name="height" type="number" onChange={handleHeight}/>
 
               <label  htmlFor="hp">HP</label>
-              <input className="number3" name="hp" type="text" onChange={handleHp}/>
+              <input className="number3" name="hp" type="number" onChange={handleHp}/>
 
               <label  htmlFor="atk">ATK</label>
-              <input className="number4" name="atk" type="text" onChange={handleAtk}/>
+              <input className="number4" name="atk" type="number" onChange={handleAtk}/>
 
               <label  htmlFor="def">DEF</label>
-              <input className="number5" name="def" type="text" onChange={handleDef}/>
+              <input className="number5" name="def" type="number" onChange={handleDef}/>
               
               <label  htmlFor="satk">SATK</label>
-              <input className="number6" name="satk" type="text" onChange={handleSatk}/>
+              <input className="number6" name="satk" type="number" onChange={handleSatk}/>
 
               <label  htmlFor="sdef">SDEF</label>
-              <input className="number7" name="sdef" type="text" onChange={handleSdef}/>
+              <input className="number7" name="sdef" type="number" onChange={handleSdef}/>
 
               <label  htmlFor="spd">SPD</label>
-              <input className="number8" name="spd" type="text" onChange={handleSpd}/>
+              <input className="number8" name="spd" type="number" onChange={handleSpd}/>
             </div>
 
             <div className="select">
