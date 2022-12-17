@@ -47,6 +47,7 @@ function App() {
       })
     }
     fetchData()
+    console.log(list)
     /*console.log(pokemons)
     console.log(types)
     console.log(movements)*/

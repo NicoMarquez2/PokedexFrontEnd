@@ -1,8 +1,32 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const CardTitle = ({pokemon, pokemonIdx, fixId, list})=>{
-  console.log(list)
+const CardTitle = ({pokemon, /*pokemonIdx*/ fixId, list, id})=>{
+  const [pokemonIdx, setpokemonIdx] = useState()
+  
+  //console.log(list)
+  useEffect(() => {
+    console.log("KLAJDALKSD")
+    console.log(list)
+      list.find((element, idx) => {
+        console.log(idx)
+        console.log(element)
+        setpokemonIdx(idx);
+      })
+  },[])
+  
+useEffect(() => {
+  console.log("XDXDXDXD")
+  list.find((element, idx) => {
+    //console.log(idx)
+    setpokemonIdx(idx);
+    return element.id == id;
+  })
+},[id])
+  
+
   console.log(pokemonIdx)
     return(
         <React.Fragment>      

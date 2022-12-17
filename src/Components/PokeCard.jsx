@@ -6,7 +6,7 @@ import CardTitle from "./CardTitle";
 
 const PokeCard = (props) => {
   const [pokemon, setpokemon] = useState();
-  const [pokemonIdx, setpokemonIdx] = useState();
+  //const [pokemonIdx, setpokemonIdx] = useState();
   const [list, setList] = useState([])
   const params = useParams();
   const id = params.id;
@@ -19,40 +19,42 @@ const PokeCard = (props) => {
     setpokemon(pokemon);
   }, [props.list, id]);*/
   
-
   useEffect(() => {
-    let aux 
+    let aux = []
     async function fetchData(){
       await fetch('http://localhost:8080/pokemon')
       .then((response)=>response.json())
       .then((data) => {
-        let aux = []
         /*setPokemons(data.pokemons)
         setTypes(data.pokemonTypes)
         setMovements(data.pokemonMovements)*/
-        console.log(data)
         for(let i = 0; i<=data.pokemons.length - 1; i++)
-        {
-          console.log(data.pokemons[i])
-          aux.push({
-            name: data.pokemons[i].name,
-            image: data.pokemons[i].img,
-            hp: data.pokemons[i].hp,
-            atk: data.pokemons[i].atk,
-            def: data.pokemons[i].def,
-            satk: data.pokemons[i].satk,
-            sdef: data.pokemons[i].sdef,
-            spd: data.pokemons[i].spd,
-            weigth: data.pokemons[i].weight,
-            heigth: data.pokemons[i].height,
-            moves: data.pokemonMovements[0].filter(move => move.id_pokemon == data.pokemons[i].id).map(move => move.movement),
-            type: data.pokemonTypes[0].filter(type => type.id_pokemon == data.pokemons[i].id).map(type => type.type),
-            description: data.pokemons[i].description,
-            id: data.pokemons[i].id,
-          })
-        } 
+        aux.push({
+          name: data.pokemons[i].name,
+          image: data.pokemons[i].img,
+          hp: data.pokemons[i].hp,
+          atk: data.pokemons[i].atk,
+          def: data.pokemons[i].def,
+          satk: data.pokemons[i].satk,
+          sdef: data.pokemons[i].sdef,
+          spd: data.pokemons[i].spd,
+          weigth: data.pokemons[i].weight,
+          heigth: data.pokemons[i].height,
+          moves: data.pokemonMovements[0].filter(move => move.id_pokemon == data.pokemons[i].id).map(move => move.movement),
+          type: data.pokemonTypes[0].filter(type => type.id_pokemon == data.pokemons[i].id).map(type => type.type),
+          description: data.pokemons[i].description,
+          id: data.pokemons[i].id,
+        })
         setList(aux)
       })
+    }
+    fetchData()
+  },[])
+
+
+  useEffect(() => {
+    let aux 
+    async function fetchData(){
       await fetch(url)
       .then((response)=>response.json())
       .then((data) => {
@@ -77,14 +79,15 @@ const PokeCard = (props) => {
           id: data.pokemon[0].id,
         }
         setpokemon(aux)
-        list.find((element, idx) => {
+        /*props.list.find((element, idx) => {
+          console.log(idx)
           setpokemonIdx(idx);
           return element.id == id;
-        })
+        })*/
       })
     }
     fetchData()
-    console.log(list)
+    //console.log(props.list)
   },[id])
 
   function fixId(pokeId) {
@@ -111,9 +114,10 @@ const PokeCard = (props) => {
           <div className="cardTitle">
               <CardTitle
               pokemon={pokemon}
-              pokemonIdx={pokemonIdx}
+              //pokemonIdx={pokemonIdx}
               fixId={fixId}
-              list={list}/>
+              list={list}
+              id={id}/>
           </div>
 
           <img
