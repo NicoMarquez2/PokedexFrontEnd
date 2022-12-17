@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import CreatePokemon from "./Components/CreatePokemon";
+import Compare from "./Components/Compare";
 
 function App() {
   const url = 'http://localhost:8080/pokemon'
@@ -22,9 +23,9 @@ function App() {
       await fetch(url)
       .then((response)=>response.json())
       .then((data) => {
-        setPokemons(data.pokemons)
+        /*setPokemons(data.pokemons)
         setTypes(data.pokemonTypes)
-        setMovements(data.pokemonMovements)
+        setMovements(data.pokemonMovements)*/
         for(let i = 0; i<=data.pokemons.length - 1; i++)
         aux.push({
           name: data.pokemons[i].name,
@@ -39,16 +40,16 @@ function App() {
           heigth: data.pokemons[i].height,
           moves: data.pokemonMovements[0].filter(move => move.id_pokemon == data.pokemons[i].id).map(move => move.movement),
           type: data.pokemonTypes[0].filter(type => type.id_pokemon == data.pokemons[i].id).map(type => type.type),
-          description: data.pokemons[i].name,
+          description: data.pokemons[i].description,
           id: data.pokemons[i].id,
         })
         setList(aux)
       })
     }
     fetchData()
-    console.log(pokemons)
+    /*console.log(pokemons)
     console.log(types)
-    console.log(movements)
+    console.log(movements)*/
   },[])
 
   /*useEffect(() => {
@@ -106,6 +107,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/create" element={<CreatePokemon/>}/>
+          <Route path="/compare" element={<Compare/>}/>
         </Routes>
       </BrowserRouter>
     </React.Fragment>

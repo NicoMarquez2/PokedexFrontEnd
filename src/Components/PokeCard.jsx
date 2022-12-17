@@ -9,14 +9,49 @@ const PokeCard = (props) => {
   const [pokemonIdx, setpokemonIdx] = useState();
   const params = useParams();
   const id = params.id;
+  const url = `http://localhost:8080/pokemon/${id}`
 
-  useEffect(() => {
+  /*useEffect(() => {
     const pokemon = props.list.find((element, idx) => {
       setpokemonIdx(idx);
       return element.id == id;
     });
     setpokemon(pokemon);
-  }, [props.list, id]);
+  }, [props.list, id]);*/
+
+  useEffect(() => {
+    let aux 
+    async function fetchData(){
+      await fetch(url)
+      .then((response)=>response.json())
+      .then((data) => {
+        /*setPokemons(data.pokemon)
+        setTypes(data.pokemonTypes)
+        setMovements(data.pokemonMovements)*/
+        console.log(data.pokemon[0])
+        aux ={
+          name: data.pokemon[0].name,
+          image: data.pokemon[0].img,
+          hp: data.pokemon[0].hp,
+          atk: data.pokemon[0].atk,
+          def: data.pokemon[0].def,
+          satk: data.pokemon[0].satk,
+          sdef: data.pokemon[0].sdef,
+          spd: data.pokemon[0].spd,
+          weigth: data.pokemon[0].weight,
+          heigth: data.pokemon[0].height,
+          moves: data.movements[0].filter(move => move.id_pokemon == data.pokemon[0].id).map(move => move.movement),
+          type: data.types[0].filter(type => type.id_pokemon == data.pokemon[0].id).map(type => type.type),
+          description: data.pokemon[0].description,
+          id: data.pokemon[0].id,
+        }
+        setpokemon(aux)
+        setpokemonIdx(id)
+      })
+    }
+    fetchData()
+    console.log(props.list)
+  },[])
 
   function fixId(pokeId) {
     if (pokeId < 10) {
@@ -89,7 +124,7 @@ const PokeCard = (props) => {
                       alt="#"
                       className="imgCategory"
                     />
-                    <span className="spanCategory">{pokemon.heigth} m</span>
+                    <span className="spanCategory">{pokemon.heigth}</span>
                   </div>
 
                   <span className="categoryTitle">Heigth</span>

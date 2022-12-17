@@ -4,6 +4,7 @@ import Header from "./Header";
 import CreateButton from "./CreateButton";
 import {Link, redirect} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 
 const PokeList = (props) => {
@@ -40,14 +41,20 @@ const PokeList = (props) => {
 
   return (
     <React.Fragment>
-      <div className="buttonLogin">
-        {localStorage.userToken ? 
-        <button className="button" onClick={handleLogOut}>LOGOUT</button> : 
-        <Link to = {"/login"}><button className="button">LOGIN</button></Link>}
-      </div>
-
+      {/*<div className="buttonsLogin">
+        <div >
+          {localStorage.userToken ? 
+          <button className="button" onClick={handleLogOut}>LOGOUT</button> : 
+          <Link to = {"/login"}><button className="button">LOGIN</button></Link>}
+        </div>
+        <div >
+            <Link to={"/compare"}><button className="button">COMPARE POKEMON</button></Link> 
+        </div>
+      </div>*/}
       
       <div className="listComponent">
+        <Navbar
+          handleLogOut={handleLogOut}/>
         <Header
           changeOrder={changeOrder}
           handleChange={handleChange}

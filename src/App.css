@@ -647,6 +647,8 @@ body{
     bottom: 0.5vh;
 }
 .listComponent{
+  display: flex;
+  flex-direction: column;
   margin-left: 6%;
   margin-right: 5%;
 }
@@ -1001,4 +1003,19 @@ a:link, a:visited, a:active {
   background-color: red; 
 }
 
+.buttonsNavbar{
+  width: 89vw;
+  height: 3vh;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: flex-start;
+  justify-content: space-between;
+  margin-top: 2vh;
+}
 
+.comparePokemon{
+  margin: 2vh 3vw;
+  height: 96vh;
+  width: 94vw;
+  background-color: #6493eb;
+}
