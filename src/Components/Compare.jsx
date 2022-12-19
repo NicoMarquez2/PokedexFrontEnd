@@ -37,8 +37,20 @@ const Compare = (props) => {
             <div className="pokemons">
                 <div className="toCompare">
                     <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
                 </div>
                 <div className="toCompare">
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
+                    <p>POKEMON</p>
                     <p>POKEMON</p>
                 </div>
             </div>      
