@@ -1014,7 +1014,7 @@ a:link, a:visited, a:active {
   justify-content: space-between;
   margin-top: 2vh;
 }
-.comparePokemon{
+.compare{
   margin: 2vh 3vw;
   height: 96vh;
   width: 94vw;
@@ -1022,11 +1022,7 @@ a:link, a:visited, a:active {
   flex-direction: column;
   gap: 4vh;
 }
-.selection{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 .selection > div{
   width: 40%;
 }
@@ -1037,17 +1033,92 @@ a:link, a:visited, a:active {
   border-radius: 2vh;
   border-color: rgba(255, 0, 0, 0.700);
 }
-.pokemons{
-  display: flex;
-  justify-content: space-around;
-}
 .error{
   margin-left: 10%;
 }
-.imgCompare{
+.comparePokemon{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 15% 85%;
+  height: 100%;
+  position: relative;
+}
+.pokemons1{
+  display: grid;
+  height: 100%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-template-areas:
+  'img'
+  'typesText'
+  'types'
+  'statsText'
+  'stats';
+  grid-template-columns: 1fr;
+  grid-template-rows: 30% 10% 10% 10% 40%;
+}
+.firstSelect{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  position: absolute;
+  height: 100%;
+  width: 95%;
+ justify-items: center;
+ align-content: space-around;
+}
+.secondSelect{
+  display: grid;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  position: absolute;
+  height: 100%;
+  width: 95%;
+ justify-items: center;
+ align-content: space-around;
+}
+.imgCompare1{
   height: 16vh;
+  display: grid;
+  grid-area: img;
+  position: absolute;
+  justify-self: center;
+  align-self: center;
 }
-.toCompare{
-  display: flex;
-  flex-direction: column;
+.spanTypes1{
+  display: grid;
+  grid-area: typesText;
+  justify-self: center;
+  align-content: center;
 }
+.pokeType1{
+  display: grid;
+  grid-area: types;
+  justify-self: center;
+  width: 45%;
+  height: 70%;
+  text-align: center;
+  align-self: center;
+}
+.pokeStats1{
+  display: grid;
+  grid-area: statsText;
+  align-content: center;
+  justify-items: center;
+  align-self: center;
+}
+.nameAndNumber1{
+  display: grid;
+  grid-area: stats;
+  align-content: space-around;
+  margin-left: 40px;
+}
+
+
+
