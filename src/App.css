@@ -1044,3 +1044,6 @@ a:link, a:visited, a:active {
 .error{
   margin-left: 10%;
 }
+.imgCompare{
+  height: 16vh;
+}

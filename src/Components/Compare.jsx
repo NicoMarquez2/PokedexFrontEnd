@@ -107,7 +107,9 @@ function fixStats(pokeStats) {
                 </div>
             </div>
              <div className="pokemons">
-             {firstPokemon && <div className="toCompare">
+             {firstPokemon && 
+                <div className="toCompare">
+                    <img className="imgCompare" src={`${firstPokemon.image}`} alt="" />
                     <div className="pokeType">
                         {firstPokemon.type.map((type, key) => (
                         <span
@@ -150,9 +152,11 @@ function fixStats(pokeStats) {
                         </div>
                     </div>
                 </div>}
-                {secondPokemon &&<div className="toCompare">
-                    <img className="imgPokeCard" src={`${secondPokemon.image}`} alt="" />
-                    <div className="pokeType">
+            {secondPokemon &&
+                <div className="toCompare">
+                    <img className="imgCompare" src={`${secondPokemon.image}`} alt="" />
+                    <span>Types</span>
+                    <div className="pokeType">                        
                         {secondPokemon.type.map((type, key) => (
                         <span
                         key={key}
