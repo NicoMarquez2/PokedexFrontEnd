@@ -110,6 +110,7 @@ function fixStats(pokeStats) {
              {firstPokemon && 
                 <div className="toCompare">
                     <img className="imgCompare" src={`${firstPokemon.image}`} alt="" />
+                    <span>Types</span>
                     <div className="pokeType">
                         {firstPokemon.type.map((type, key) => (
                         <span
