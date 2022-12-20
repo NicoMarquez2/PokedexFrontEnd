@@ -111,7 +111,6 @@ function fixStats(pokeStats) {
                         <div className="spanTypes1">
                             <span>Types</span>
                         </div>
-                        
                         <div className="pokeType1">
                             {firstPokemon.type.map((type, key) => (
                             <span
@@ -159,10 +158,12 @@ function fixStats(pokeStats) {
                         
                     </div>}
                 {secondPokemon &&
-                    <div className="aVerMovete">
+                    <div className="pokemons2">
                         <img className="imgCompare2" src={`${secondPokemon.image}`} alt="" />
-                        <span>Types</span>
-                        <div className="pokeType">                        
+                        <div className="spanTypes2">
+                            <span>Types</span>
+                        </div>
+                        <div className="pokeType2">                        
                             {secondPokemon.type.map((type, key) => (
                             <span
                             key={key}
@@ -172,37 +173,41 @@ function fixStats(pokeStats) {
                             </span>
                             ))}
                         </div>
-                        <div className="nameAndNumber">
-                            <div className="stats">
-                                <span className={`${secondPokemon.type[0]} backgroundWhite`}>
-                                HP
-                                </span>
-                                <span className={`${secondPokemon.type[0]} backgroundWhite`}>
-                                ATK
-                                </span>
-                                <span className={`${secondPokemon.type[0]} backgroundWhite`}>
-                                DEF
-                                </span>
-                                <span className={`${secondPokemon.type[0]} backgroundWhite`}>
-                                SATK
-                                </span>
-                                <span className={`${secondPokemon.type[0]} backgroundWhite`}>
-                                SDEF
-                                </span>
-                                <span className={`${secondPokemon.type[0]} backgroundWhite`}>
-                                SPD
-                                </span>
-                            </div>
-                        <hr />
-                            <div className="stats">
-                                <span>{fixStats(secondPokemon.hp)}</span>
-                                <span>{fixStats(secondPokemon.atk)}</span>
-                                <span>{fixStats(secondPokemon.def)}</span>
-                                <span>{fixStats(secondPokemon.satk)}</span>
-                                <span>{fixStats(secondPokemon.sdef)}</span>
-                                <span>{fixStats(secondPokemon.spd)}</span>
+                        <p className="pokeStats2">Stats</p>
+                        <div className="nameAndNumber2">
+                            <div className="nameAndNumber">
+                                <div className="stats">
+                                    <span className={`${secondPokemon.type[0]} backgroundWhite`}>
+                                    HP
+                                    </span>
+                                    <span className={`${secondPokemon.type[0]} backgroundWhite`}>
+                                    ATK
+                                    </span>
+                                    <span className={`${secondPokemon.type[0]} backgroundWhite`}>
+                                    DEF
+                                    </span>
+                                    <span className={`${secondPokemon.type[0]} backgroundWhite`}>
+                                    SATK
+                                    </span>
+                                    <span className={`${secondPokemon.type[0]} backgroundWhite`}>
+                                    SDEF
+                                    </span>
+                                    <span className={`${secondPokemon.type[0]} backgroundWhite`}>
+                                    SPD
+                                    </span>
+                                </div>
+                            <hr />
+                                <div className="stats">
+                                    <span>{fixStats(secondPokemon.hp)}</span>
+                                    <span>{fixStats(secondPokemon.atk)}</span>
+                                    <span>{fixStats(secondPokemon.def)}</span>
+                                    <span>{fixStats(secondPokemon.satk)}</span>
+                                    <span>{fixStats(secondPokemon.sdef)}</span>
+                                    <span>{fixStats(secondPokemon.spd)}</span>
+                                </div>
                             </div>
                         </div>
+                        
                     </div>}  
             </div>
         </div>
