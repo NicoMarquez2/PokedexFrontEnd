@@ -1018,7 +1018,9 @@ a:link, a:visited, a:active {
   margin: 2vh 3vw;
   height: 96vh;
   width: 94vw;
-  /*background-color: #6493eb;*/
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
 }
 .selection{
   display: flex;
@@ -1038,4 +1040,7 @@ a:link, a:visited, a:active {
 .pokemons{
   display: flex;
   justify-content: space-around;
+}
+.error{
+  margin-left: 10%;
 }

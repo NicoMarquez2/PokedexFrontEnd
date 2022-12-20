@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
 import { Link } from "react-router-dom";
 import CardTitle from "./CardTitle";
+import Error from "./Error";
 
 const PokeCard = (props) => {
   const [pokemon, setpokemon] = useState();
+  const [error, setError] = useState(false)
   //const [pokemonIdx, setpokemonIdx] = useState();
   const [list, setList] = useState([])
   const params = useParams();
@@ -60,24 +62,28 @@ const PokeCard = (props) => {
       await fetch(url)
       .then((response)=>response.json())
       .then((data) => {
-        console.log(data.pokemon[0])
-        aux ={
-          name: data.pokemon[0].name,
-          image: data.pokemon[0].img,
-          hp: data.pokemon[0].hp,
-          atk: data.pokemon[0].atk,
-          def: data.pokemon[0].def,
-          satk: data.pokemon[0].satk,
-          sdef: data.pokemon[0].sdef,
-          spd: data.pokemon[0].spd,
-          weigth: data.pokemon[0].weight,
-          heigth: data.pokemon[0].height,
-          moves: data.movements[0].filter(move => move.id_pokemon == data.pokemon[0].id).map(move => move.movement),
-          type: data.types[0].filter(type => type.id_pokemon == data.pokemon[0].id).map(type => type.type),
-          description: data.pokemon[0].description,
-          id: data.pokemon[0].id,
-        }
-        setpokemon(aux)
+        if(data.message){
+          setError(true)
+        } else {
+          console.log(data.pokemon[0])
+          aux ={
+            name: data.pokemon[0].name,
+            image: data.pokemon[0].img,
+            hp: data.pokemon[0].hp,
+            atk: data.pokemon[0].atk,
+            def: data.pokemon[0].def,
+            satk: data.pokemon[0].satk,
+            sdef: data.pokemon[0].sdef,
+            spd: data.pokemon[0].spd,
+            weigth: data.pokemon[0].weight,
+            heigth: data.pokemon[0].height,
+            moves: data.movements[0].filter(move => move.id_pokemon == data.pokemon[0].id).map(move => move.movement),
+            type: data.types[0].filter(type => type.id_pokemon == data.pokemon[0].id).map(type => type.type),
+            description: data.pokemon[0].description,
+            id: data.pokemon[0].id,
+          }
+          setpokemon(aux)
+        }      
       })
     }
     fetchData()
@@ -100,6 +106,7 @@ const PokeCard = (props) => {
 
   return (
     <React.Fragment>
+      {error && <Error></Error>}
       {pokemon && (
         <div
           className={`pokeCardOnly ${pokemon.type[0]}`}
