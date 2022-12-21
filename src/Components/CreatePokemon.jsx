@@ -62,7 +62,7 @@ const CreatePokemon = () => {
     }
 
     useEffect(() => {
-      if(!localStorage.Autorithation){
+      if(!localStorage.userToken){
         console.log("NO USER")
         navigate('/')
       }
