@@ -52,6 +52,7 @@ const CreatePokemon = () => {
     const [spd, setSpd] = useState(0)
     const [types, setTypes] = useState([])
     const [movements, setMovements] = useState([])
+    const [message, setMessage] = useState("")
 
 
     const onSelect = (selectedList, selectedItem) => {
@@ -103,28 +104,48 @@ const CreatePokemon = () => {
         if(isValidNumber(e.target.value)){
           setHp(e.target.value)
         } else {
-          console.log("muy grande el numero pa")
+          setMessage("El valor maximo de stats es 255")
         }
       }
       const handleAtk = (e) => {
         e.preventDefault()
-        setAtk(e.target.value)
+        if(isValidNumber(e.target.value)){
+          setAtk(e.target.value)
+        } else {
+          setMessage("El valor maximo de stats es 255")
+        }
       }
       const handleDef = (e) => {
         e.preventDefault()
-        setDef(e.target.value)
+        if(isValidNumber(e.target.value)){
+          setDef(e.target.value)
+        } else {
+          setMessage("El valor maximo de stats es 255")
+        }
       }
       const handleSatk = (e) => {
         e.preventDefault()
-        setSatk(e.target.value)
+        if(isValidNumber(e.target.value)){
+          setSatk(e.target.value)
+        } else {
+          setMessage("El valor maximo de stats es 255")
+        }
       }
       const handleSdef = (e) => {
         e.preventDefault()
-        setSdef(e.target.value)
+        if(isValidNumber(e.target.value)){
+          setSdef(e.target.value)
+        } else {
+          setMessage("El valor maximo de stats es 255")
+        }
       }
       const handleSpd = (e) => {
         e.preventDefault()
-        setSpd(e.target.value)
+        if(isValidNumber(e.target.value)){
+          setSpd(e.target.value)
+        } else {
+          setMessage("El valor maximo de stats es 255")
+        }
       }
       const handleTypes = (e) => {
         e.preventDefault()
@@ -166,6 +187,7 @@ const CreatePokemon = () => {
           }
         })
       }
+
 
     return(
       <div className="createGeneral">
@@ -239,7 +261,8 @@ const CreatePokemon = () => {
             </div>
             <button className="buttonCreate" type="button" onClick={handleButton}>Create</button>
         </form>
-        <img className="authImg" src='/Referencias/colorPokeball.png'></img>
+        <img className="imgCreate" src='/Referencias/colorPokeball.png'></img>
+        <p>{message && message}</p>
       </div>
 
     )

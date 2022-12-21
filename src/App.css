@@ -856,7 +856,7 @@ a:link, a:visited, a:active {
 .numbers{
   grid-area: numberss;
   display: grid;
-  height: 19vh;
+  height: 10vh;
   grid-template-areas:
   'we he' 
   'number1 number2'
@@ -868,6 +868,7 @@ a:link, a:visited, a:active {
   'number7 number8';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
+  margin-top: 3vh;
 }
 .number1{
   grid-area: number1;
@@ -997,6 +998,11 @@ a:link, a:visited, a:active {
   border-radius: 15px 15px 0px 0px;
   left: 50%;
   background-color: white !important;
+}
+.imgCreate{
+  width: 30vw;
+  margin-left: 30vw;
+  margin-top: -2.5vw;
 }
 .groupHeading{
   color: rebeccapurple;
