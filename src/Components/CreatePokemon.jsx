@@ -55,12 +55,12 @@ const CreatePokemon = () => {
     const [message, setMessage] = useState("")
 
 
-    const onSelect = (selectedList, selectedItem) => {
+    /*const onSelect = (selectedList, selectedItem) => {
   
     }
     const onRemove = (selectedList, removedItem) => {
       
-    }
+    }*/
 
     useEffect(() => {
       if(!localStorage.userToken){
@@ -69,9 +69,22 @@ const CreatePokemon = () => {
       }
     },[])
 
-    function isValidNumber(number){
+    function isValidStat(number){
       if(number > 255) return false
       else return true
+    }
+
+    function isValidWeightHeight(number){
+      if(number){
+        return true
+      } else {
+        return false
+      } 
+    }
+
+    function selectsNotEmpty(selects){
+      if(selects) return true
+      else return false
     }
 
      const handleName = (e) => {
@@ -101,51 +114,27 @@ const CreatePokemon = () => {
 
       const handleHp = (e) => {
         e.preventDefault()
-        if(isValidNumber(e.target.value)){
-          setHp(e.target.value)
-        } else {
-          setMessage("El valor maximo de stats es 255")
-        }
+        setHp(e.target.value)
       }
       const handleAtk = (e) => {
         e.preventDefault()
-        if(isValidNumber(e.target.value)){
-          setAtk(e.target.value)
-        } else {
-          setMessage("El valor maximo de stats es 255")
-        }
+        setAtk(e.target.value)
       }
       const handleDef = (e) => {
         e.preventDefault()
-        if(isValidNumber(e.target.value)){
-          setDef(e.target.value)
-        } else {
-          setMessage("El valor maximo de stats es 255")
-        }
+        setDef(e.target.value)
       }
       const handleSatk = (e) => {
         e.preventDefault()
-        if(isValidNumber(e.target.value)){
-          setSatk(e.target.value)
-        } else {
-          setMessage("El valor maximo de stats es 255")
-        }
+        setSatk(e.target.value)
       }
       const handleSdef = (e) => {
         e.preventDefault()
-        if(isValidNumber(e.target.value)){
-          setSdef(e.target.value)
-        } else {
-          setMessage("El valor maximo de stats es 255")
-        }
+        setSdef(e.target.value)
       }
       const handleSpd = (e) => {
         e.preventDefault()
-        if(isValidNumber(e.target.value)){
-          setSpd(e.target.value)
-        } else {
-          setMessage("El valor maximo de stats es 255")
-        }
+        setSpd(e.target.value)
       }
       const handleTypes = (e) => {
         e.preventDefault()
@@ -157,35 +146,47 @@ const CreatePokemon = () => {
       }
       
       const handleButton = async () => {
-        let pokemon = {
-            name: name,
-            img: img,
-            description: description,
-            weight: weight,
-            height: height,
-            hp: hp,
-            atk: atk,
-            def: def,
-            satk: satk,
-            sdef: sdef,
-            spd: spd
-        }
-        let pokemonTypes = types
-        let pokemonMovements = movements
-
-        console.log(pokemonTypes)
-        console.log(pokemonMovements)
-        console.log(({pokemon, pokemonTypes, pokemonMovements}))
-        await fetch(url,{
-          method: 'POST',
-          body: JSON.stringify({pokemon, pokemonTypes, pokemonMovements}),
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'UserId': localStorage.getItem('userId'),
-              'Autorithation': localStorage.getItem('userToken')
-          }
-        })
+        if(isValidStat(hp) && isValidStat(atk) && isValidStat(def) && 
+          isValidStat(satk) && isValidStat(sdef) && isValidStat(spd)){
+            console.log("entro primer if")
+            if(isValidWeightHeight(weight) && isValidWeightHeight(height)){
+              console.log("entro segundo if")
+              if(selectsNotEmpty(types[0]) && selectsNotEmpty(movements[0])){
+                let pokemon = {
+                  name: name,
+                  img: img,
+                  description: description,
+                  weight: weight,
+                  height: height,
+                  hp: hp,
+                  atk: atk,
+                  def: def,
+                  satk: satk,
+                  sdef: sdef,
+                  spd: spd
+                }
+                  let pokemonTypes = types
+                  let pokemonMovements = movements
+      
+                  await fetch(url,{
+                    method: 'POST',
+                    body: JSON.stringify({pokemon, pokemonTypes, pokemonMovements}),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'UserId': localStorage.getItem('userId'),
+                        'Autorithation': localStorage.getItem('userToken')
+                    }
+                  })
+              } else {
+                setMessage('Types or movements cant be empty')
+              }              
+            } else {
+              setMessage('El peso o altura no puede ser vacío')
+            }           
+        } else {
+          setMessage('El valor de las stats no puede ser mayor a 255')
+        }    
       }
 
 
@@ -239,20 +240,20 @@ const CreatePokemon = () => {
               <div className="selectT">
                 <span>Select Types</span>
                 <Multiselect
-                  options={typeOptions} // Options to display in the dropdown
-                  onSelect={setTypes} // Function will trigger on select event
-                  onRemove={onRemove} // Function will trigger on remove event
-                  displayValue="name" // Property name to display in the dropdown options
+                  options={typeOptions}
+                  onSelect={setTypes}
+                  /*onRemove={onRemove}*/
+                  displayValue="name"
                   selectionLimit="2"
                 />
               </div>
               <div className="selectM">
                 <span>Select Movements</span>
                 <Multiselect
-                  options={movementsOptions} // Options to display in the dropdown
-                  onSelect={setMovements} // Function will trigger on select event
-                  onRemove={onRemove} // Function will trigger on remove event
-                  displayValue="name" // Property name to display in the dropdown options
+                  options={movementsOptions}
+                  onSelect={setMovements}
+                  /*onRemove={onRemove}*/
+                  displayValue="name"
                   selectionLimit="2"
                 />
               </div>
@@ -261,8 +262,7 @@ const CreatePokemon = () => {
             </div>
             <button className="buttonCreate" type="button" onClick={handleButton}>Create</button>
         </form>
-        <img className="imgCreate" src='/Referencias/colorPokeball.png'></img>
-        <p>{message && message}</p>
+        {message ? <p>{message}</p> : <img className="imgCreate" src='/Referencias/colorPokeball.png'></img>}      
       </div>
 
     )
