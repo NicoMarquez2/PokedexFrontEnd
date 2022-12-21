@@ -6,6 +6,7 @@ import ProgressBar from "./ProgressBar";
 const Compare = (props) => {
     const [firstPokemon, setFirstPokemon] = useState();
     const [secondPokemon, setSecondPokemon] = useState();
+    const [notSelected, setNotSelected] = useState(true)
 
     function getId(pokemon){
         const findPokemon = props.list.find((element) => element.name == pokemon)
@@ -38,7 +39,8 @@ const Compare = (props) => {
               setSecondPokemon(aux)
             })
           }
-      fetchData(getId(e.target.value))
+        setNotSelected(false)
+        fetchData(getId(e.target.value))
     }
 
     const handleFirstSelect = (e) => {
@@ -67,6 +69,7 @@ const Compare = (props) => {
                 setFirstPokemon(aux)
               })
             }
+        setNotSelected(false)
         fetchData(getId(e.target.value))
         console.log("funciona por favor te pido marta")
     }
@@ -80,7 +83,7 @@ function fixStats(pokeStats) {
 
     return(
         <div className="compare">
-            <div className="authHeader">
+            <div className="compareHeader">
                 <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
                 <div>
                   <h1>Compare Pokemon</h1>
@@ -90,7 +93,7 @@ function fixStats(pokeStats) {
                     <div className="firstSelect">
                         <label htmlFor="firstPokemon">Choose Pokemon</label>
                         <select className="selectPokemon" name="firstPokemon" onChange={handleFirstSelect}>
-                            <option disabled>none</option>
+                            <option>none</option>
                             {props.list.map((element, key) => (
                                 <option key={key} value={`${element.name}`}>{element.name}</option>
                             ))}
@@ -105,6 +108,8 @@ function fixStats(pokeStats) {
                             ))}
                         </select>
                     </div>
+                {notSelected && 
+                    <h1 className="noSelected">Select Pokemons to Compare</h1>}
                 {firstPokemon && 
                     <div className="pokemons1">
                         <img className="imgCompare1" src={`${firstPokemon.image}`} alt="" />

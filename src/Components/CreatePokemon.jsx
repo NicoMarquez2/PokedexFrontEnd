@@ -1,8 +1,8 @@
 import React, { useEffect, useState }  from "react";
-import { json, Link } from "react-router-dom";
+import { json, Link, redirect, useNavigate } from "react-router-dom";
 import Multiselect from 'multiselect-react-dropdown';
 
-const url = 'http://localhost:8080/pokemon' 
+const url = 'http://localhost:8080/pokemon'  
 
 const typeOptions = [
     {name: "Ice" , id: 1},
@@ -37,7 +37,8 @@ const typeOptions = [
   ];
 
 const CreatePokemon = () => {
-    
+    let navigate = useNavigate()
+    const [validUser, setValidUser] = useState(false)
     const [name, setName] = useState("")
     const [img, setImg] = useState("")
     const [weight, setWeight] = useState(0)
@@ -59,6 +60,13 @@ const CreatePokemon = () => {
     const onRemove = (selectedList, removedItem) => {
       
     }
+
+    useEffect(() => {
+      if(!localStorage.Autorithation){
+        console.log("NO USER")
+        navigate('/')
+      }
+    },[])
 
     function isValidNumber(number){
       if(number > 255) return false
@@ -92,7 +100,11 @@ const CreatePokemon = () => {
 
       const handleHp = (e) => {
         e.preventDefault()
-        setHp(e.target.value)
+        if(isValidNumber(e.target.value)){
+          setHp(e.target.value)
+        } else {
+          console.log("muy grande el numero pa")
+        }
       }
       const handleAtk = (e) => {
         e.preventDefault()
@@ -150,7 +162,7 @@ const CreatePokemon = () => {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
               'UserId': localStorage.getItem('userId'),
-              'UserToken': localStorage.getItem('userToken')
+              'Autorithation': localStorage.getItem('userToken')
           }
         })
       }
@@ -166,13 +178,13 @@ const CreatePokemon = () => {
         <form className="createForm" onSubmit={(e)=>e.preventDefault()}>
             <div className="letters">
               <label htmlFor="name">NAME</label>
-              <input name="Name" type="text" onChange={handleName}/>
+              <input name="Name" type="text" maxLength={16} onChange={handleName}/>
 
               <label htmlFor="img">IMG URL</label>
               <input name="img" type="text" onChange={handleImg}/>
 
               <label htmlFor="description">DESCRIPTION</label>
-              <textarea name="description" type="text" maxLength={255} onChange={handleDescription}/>
+              <textarea className="textDescription" name="description" type="text" maxLength={255} onChange={handleDescription}/>
             </div>
 
             <div className="numbers">

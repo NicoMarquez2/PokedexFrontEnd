@@ -851,7 +851,7 @@ a:link, a:visited, a:active {
   grid-area: letters;
   display: flex;
   flex-direction: column;
-  height: 18vh;
+  height: 32vh;
 }
 .numbers{
   grid-area: numberss;
@@ -966,6 +966,7 @@ a:link, a:visited, a:active {
 .createForm textarea{
   border-radius: 10px;
   border-color: rgba(255, 0, 0, 0.700);
+  height: 7vh;
 }
 .create{
   width: 90%;
@@ -1015,23 +1016,24 @@ a:link, a:visited, a:active {
   margin-top: 2vh;
 }
 .compare{
-  margin: 2vh 3vw;
-  height: 96vh;
-  width: 94vw;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  gap: 4vh;
+  gap: 2vh;
+  background-color: rgba(255, 0, 0, 0.700);
 }
 
 .selection > div{
   width: 40%;
 }
 .selectPokemon{
-  width: 100%;
+  width: 90%;
   height: 4vh;
   font-weight: bolder;
   border-radius: 2vh;
   border-color: rgba(255, 0, 0, 0.700);
+  justify-self: center;
 }
 .error{
   margin-left: 10%;
@@ -1040,8 +1042,11 @@ a:link, a:visited, a:active {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 15% 85%;
-  height: 100%;
+  height: 80%;
   position: relative;
+  margin: 2vh 2vh 0vh 2vh;
+  background-color: white;
+  border-radius: 2vh;
 }
 .pokemons1{
   display: grid;
@@ -1067,7 +1072,7 @@ a:link, a:visited, a:active {
   grid-row-end: 2;
   position: absolute;
   height: 100%;
-  width: 95%;
+  width: 100%;
  justify-items: center;
  align-content: space-around;
 }
@@ -1079,7 +1084,7 @@ a:link, a:visited, a:active {
   grid-row-end: 2;
   position: absolute;
   height: 100%;
-  width: 95%;
+  width: 100%;
  justify-items: center;
  align-content: space-around;
 }
@@ -1102,7 +1107,7 @@ a:link, a:visited, a:active {
   grid-area: types;
   justify-self: center;
   width: 100%;
-  height: 60%;
+  height: 70%;
   text-align: center;
   justify-content: center;
 }
@@ -1155,7 +1160,7 @@ a:link, a:visited, a:active {
   grid-area: types2;
   justify-self: center;
   width: 100%;
-  height: 60%;
+  height: 70%;
   text-align: center;
   justify-content: center;
 }
@@ -1173,7 +1178,21 @@ a:link, a:visited, a:active {
   margin-left: 6vh;
   margin-bottom: 6vh;
 }
-
+.compareHeader{
+  display: flex;
+  justify-content: space-between;
+  margin: 2vh 2vh 0vh 2vh;
+}
+.compareHeader div{
+  font-size: x-small;
+  margin-top: -15px;
+}
+.noSelected{
+  position: relative;
+  top: 17vh;
+  left: 14vh;
+  text-align: center;
+}
 
 
 
