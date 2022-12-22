@@ -52,7 +52,7 @@ const PokeList = (props) => {
         </div>
       </div>*/}
       
-      {props.isLoading ? <img src={"./Referencias/loading-13.gif"}/> : <div className="listComponent">
+      {props.isLoading ? <img className="loadingGeneral" src={"./Referencias/loading-13.gif"}/> : <div className="listComponent">
         <Navbar
           handleLogOut={handleLogOut}/>
         <Header

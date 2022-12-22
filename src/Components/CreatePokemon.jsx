@@ -53,6 +53,8 @@ const CreatePokemon = () => {
     const [types, setTypes] = useState([])
     const [movements, setMovements] = useState([])
     const [message, setMessage] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+
 
 
     /*const onSelect = (selectedList, selectedItem) => {
@@ -167,7 +169,9 @@ const CreatePokemon = () => {
                 }
                   let pokemonTypes = types
                   let pokemonMovements = movements
-      
+
+                  setIsLoading(true)
+
                   await fetch(url,{
                     method: 'POST',
                     body: JSON.stringify({pokemon, pokemonTypes, pokemonMovements}),
@@ -178,6 +182,11 @@ const CreatePokemon = () => {
                         'Autorithation': localStorage.getItem('userToken')
                     }
                   })
+                  .then((response)=>response.json())
+                  
+                  .then((data) => {console.log(data)
+                    if(data.status == 200)
+                  setMessage("Pokemon creado correctamente")})
               } else {
                 setMessage('Types or movements cant be empty')
               }              
@@ -186,19 +195,23 @@ const CreatePokemon = () => {
             }           
         } else {
           setMessage('El valor de las stats no puede ser mayor a 255')
-        }    
+        }
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000);    
       }
 
 
     return(
-      <div className="createGeneral">
+      <React.Fragment>
+        {isLoading ? <img className="loadingGeneral" src={"./Referencias/loading-13.gif"}/> :<div className="createGeneral">
         <div className="authHeader">
                 <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
                 <div>
                   <h1>Create Pokemon</h1>
                 </div>
             </div>
-        <form className="createForm" onSubmit={(e)=>e.preventDefault()}>
+            <form className="createForm" onSubmit={(e)=>e.preventDefault()}>
             <div className="letters">
               <label htmlFor="name">NAME</label>
               <input name="Name" type="text" maxLength={16} onChange={handleName}/>
@@ -262,8 +275,10 @@ const CreatePokemon = () => {
             </div>
             <button className="buttonCreate" type="button" onClick={handleButton}>Create</button>
         </form>
-        {message ? <p>{message}</p> : <img className="imgCreate" src='/Referencias/colorPokeball.png'></img>}      
-      </div>
+        {message && <p className="createMessage">{message}</p>}     
+      </div>}
+      </React.Fragment>
+      
 
     )
 } 

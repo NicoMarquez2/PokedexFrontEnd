@@ -117,7 +117,7 @@ const PokeCard = (props) => {
   return (
     <React.Fragment>
       {error && <Error></Error>}
-      {isLoading ? <img src={"./Referencias/loading-13.gif"}/> : pokemon && (
+      {isLoading ? <img className="loadingGeneral" src={"./Referencias/loading-13.gif"}/> : pokemon && (
         <div
           className={`pokeCardOnly ${pokemon.type[0]}`}
         >

@@ -56,7 +56,7 @@ const Login = (props) => {
 
     return(
         <React.Fragment>
-            {isLoading ? <img src={"./Referencias/loading-13.gif"}/> : <div className="auth">
+            {isLoading ? <img className="loadingGeneral" src={"./Referencias/loading-13.gif"}/> : <div className="auth">
                 <div className="authHeader">
                     <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
                     <Link to = {"/register"}><button className="button">REGISTER</button></Link>

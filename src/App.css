@@ -832,10 +832,10 @@ a:link, a:visited, a:active {
 .createGeneral{
   display: flex;
   flex-direction: column;
-  gap: 10%;
   width: 90vw;
   margin-left: 5vw;
   margin-top: 3vh;
+  height: 95vh;
 }
 .createForm{
   display: grid;
@@ -958,7 +958,7 @@ a:link, a:visited, a:active {
   border-radius: 10px;
   background-color: rgba(255, 0, 0, 0.700);
   font-weight: 900;
-  margin-bottom: 10vh;
+  margin-top: 8vh;
 }
 .createForm input{
   border-radius: 10px;
@@ -968,6 +968,7 @@ a:link, a:visited, a:active {
   border-radius: 10px;
   border-color: rgba(255, 0, 0, 0.700);
   height: 7vh;
+  border-width: 2px;
 }
 .create{
   width: 90%;
@@ -1211,6 +1212,18 @@ a:link, a:visited, a:active {
   left: 35vh;
 
 }
+.loadingGeneral{
+    position: relative;
+    height: 10vh;
+    top: 43vh;
+    left: 23.5vh;
+}
+.createMessage{
+  display: flex;
+  margin-top: 9vh;
+  align-self: center;
+}
+
 
 
 
