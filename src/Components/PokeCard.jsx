@@ -133,6 +133,10 @@ const PokeCard = (props) => {
           <img
             className="imgPokeCard"
             src={`${pokemon.image}`}
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null;
+              currentTarget.src="./Referencias/colorPokeball.png";
+            }}
           />
 
           <div className="pokeDescription">

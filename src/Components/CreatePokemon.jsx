@@ -182,11 +182,10 @@ const CreatePokemon = () => {
                         'Autorithation': localStorage.getItem('userToken')
                     }
                   })
-                  .then((response)=>response.json())
-                  
-                  .then((data) => {console.log(data)
-                    if(data.status == 200)
-                  setMessage("Pokemon creado correctamente")})
+                  .then((response)=>{
+                    response.json()
+                    if(response.status == 201)
+                      setMessage("Pokemon created successfully")})                  
               } else {
                 setMessage('Types or movements cant be empty')
               }              
