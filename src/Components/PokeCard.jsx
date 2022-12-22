@@ -13,6 +13,7 @@ const PokeCard = (props) => {
   const params = useParams();
   const id = params.id;
   const url = `http://localhost:8080/pokemon/${id}`
+  const [isLoading, setIsLoading] = useState(false)
   /*useEffect(() => {
     const pokemon = props.list.find((element, idx) => {
       setpokemonIdx(idx);
@@ -50,9 +51,14 @@ const PokeCard = (props) => {
             description: data.pokemons[i].description,
             id: data.pokemons[i].id,
           })
-          setList(aux)
+          setTimeout(() => {
+            setIsLoading(false)
+            setList(aux)
+            
+          }, 1000);
         })
       }
+      setIsLoading(true)
       fetchData()
   },[])
 
@@ -82,10 +88,14 @@ const PokeCard = (props) => {
             description: data.pokemon[0].description,
             id: data.pokemon[0].id,
           }
-          setpokemon(aux)
+          setTimeout(() => {
+            setIsLoading(false)
+            setpokemon(aux)
+          }, 1000);
         }      
       })
     }
+    setIsLoading(true)
     fetchData()
   },[id])
 
@@ -107,7 +117,7 @@ const PokeCard = (props) => {
   return (
     <React.Fragment>
       {error && <Error></Error>}
-      {pokemon && (
+      {isLoading ? <img src={"./Referencias/loading-13.gif"}/> : pokemon && (
         <div
           className={`pokeCardOnly ${pokemon.type[0]}`}
         >

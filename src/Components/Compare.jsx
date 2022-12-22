@@ -7,6 +7,8 @@ const Compare = (props) => {
     const [firstPokemon, setFirstPokemon] = useState();
     const [secondPokemon, setSecondPokemon] = useState();
     const [notSelected, setNotSelected] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingSecond, setIsLoadingSecond] = useState(false)
 
     function getId(pokemon){
         const findPokemon = props.list.find((element) => element.name == pokemon)
@@ -36,9 +38,14 @@ const Compare = (props) => {
                 description: data.pokemon[0].description,
                 id: data.pokemon[0].id,
               }
-              setSecondPokemon(aux)
+              setTimeout(() => {
+                setIsLoadingSecond(false)
+                setSecondPokemon(aux)
+                
+              }, 1000);
             })
           }
+        setIsLoadingSecond(true)
         setNotSelected(false)
         fetchData(getId(e.target.value))
     }
@@ -66,9 +73,13 @@ const Compare = (props) => {
                   description: data.pokemon[0].description,
                   id: data.pokemon[0].id,
                 }
-                setFirstPokemon(aux)
+                setTimeout(() => {
+                    setIsLoading(false)
+                    setFirstPokemon(aux)
+                  }, 1000);
               })
             }
+        setIsLoading(true)
         setNotSelected(false)
         fetchData(getId(e.target.value))
         console.log("funciona por favor te pido marta")
@@ -110,7 +121,7 @@ function fixStats(pokeStats) {
                     </div>
                 {notSelected && 
                     <h1 className="noSelected">Select Pokemons to Compare</h1>}
-                {firstPokemon && 
+                {isLoading ? <img className="loadingImg" src={"./Referencias/loading-13.gif"}/> : firstPokemon && 
                     <div className="pokemons1">
                         <img className="imgCompare1" src={`${firstPokemon.image}`} alt="" />
                         <div className="spanTypes1">
@@ -162,7 +173,7 @@ function fixStats(pokeStats) {
                         </div>
                         
                     </div>}
-                {secondPokemon &&
+                {isLoadingSecond ? <img className="loadingImgSecond" src={"./Referencias/loading-13.gif"}/> : secondPokemon &&
                     <div className="pokemons2">
                         <img className="imgCompare2" src={`${secondPokemon.image}`} alt="" />
                         <div className="spanTypes2">

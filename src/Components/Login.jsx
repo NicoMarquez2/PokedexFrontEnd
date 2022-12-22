@@ -9,6 +9,7 @@ const Login = (props) => {
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
     let navigate = useNavigate('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const url ="http://localhost:8080/login"
 
@@ -38,38 +39,45 @@ const Login = (props) => {
         })
         .then((response) => response.json())
         .then((data)=>{
-            if(data.token){
-                /*props.setLogIn()*/
-                localStorage.setItem('userToken',data.token)
-                localStorage.setItem('userId', data.userId)
-                navigate('/')
-            } else {
-                setMessage(data.message)
-            }
+            setTimeout(() => {
+                setIsLoading(false)
+                if(data.token){
+                    /*props.setLogIn()*/
+                    localStorage.setItem('userToken',data.token)
+                    localStorage.setItem('userId', data.userId)
+                    navigate('/')
+                } else {
+                    setMessage(data.message)
+                }
+              }, 1000);
+              setIsLoading(true)
         })
     }
 
     return(
+        <React.Fragment>
+            {isLoading ? <img src={"./Referencias/loading-13.gif"}/> : <div className="auth">
+                <div className="authHeader">
+                    <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
+                    <Link to = {"/register"}><button className="button">REGISTER</button></Link>
+                </div>
+                <form className="authForm" onSubmit={(e)=>e.preventDefault()}>
+                    <label htmlFor="loginEmail">E-mail</label>
+                    <input name="loginEmail" type="mail" onInput={handleEmail}/>
 
-        <div className="auth">
-            <div className="authHeader">
-                <Link to={"/"}><img src="/Referencias/arrow-left.svg" /></Link>
-                <Link to = {"/register"}><button className="button">REGISTER</button></Link>
-            </div>
-            <form className="authForm" onSubmit={(e)=>e.preventDefault()}>
-                <label htmlFor="loginEmail">E-mail</label>
-                <input name="loginEmail" type="mail" onInput={handleEmail}/>
+                    <label htmlFor="loginPassword">Password</label>
+                    <input name="loginPassword" type="password" onInput={handlePassword}/>
 
-                <label htmlFor="loginPassword">Password</label>
-                <input name="loginPassword" type="password" onInput={handlePassword}/>
+                    <button type="button" className="button" onClick={handleButton}>Log In</button>
+                    <p>{message && message}</p>
+                </form>
+                <div>
+                    <img className="authImg" src='/Referencias/colorPokeball.png'></img>
+                </div>    
+            </div>}
+        </React.Fragment>
 
-                <button type="button" className="button" onClick={handleButton}>Log In</button>
-                <p>{message && message}</p>
-            </form>
-            <div>
-                <img className="authImg" src='/Referencias/colorPokeball.png'></img>
-            </div>    
-        </div>
+        
         
     )
 }

@@ -1199,6 +1199,19 @@ a:link, a:visited, a:active {
   left: 14vh;
   text-align: center;
 }
+.loadingImg{
+  height: 5vh;
+  margin-top: 30vh;
+  margin-left: 10vh;
+}
+.loadingImgSecond{
+  position: relative;
+  height: 5vh;
+  top: 30vh;
+  left: 35vh;
+
+}
+
 
 
 

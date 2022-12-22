@@ -52,7 +52,7 @@ const PokeList = (props) => {
         </div>
       </div>*/}
       
-      <div className="listComponent">
+      {props.isLoading ? <img src={"./Referencias/loading-13.gif"}/> : <div className="listComponent">
         <Navbar
           handleLogOut={handleLogOut}/>
         <Header
@@ -73,7 +73,7 @@ const PokeList = (props) => {
             />
           ))}
         </div>
-      </div>
+      </div>}
     </React.Fragment>
   );
 };
