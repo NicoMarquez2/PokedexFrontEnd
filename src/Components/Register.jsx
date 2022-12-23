@@ -39,7 +39,9 @@ const Register = (props) => {
             body: JSON.stringify(userToRegister)
         })
         .then((response) => {
-            if(response.status == 204){
+            if(response.status == 500){
+                setCreatedMessage("An error has occurred")
+            } else if(response.status == 204){
                 setCreatedMessage("Usuario creado exitosamente, regrese al login para iniciar sesion")
             } else {
                 setCreatedMessage("Email ya registrado")

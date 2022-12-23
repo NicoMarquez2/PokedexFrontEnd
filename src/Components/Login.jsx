@@ -42,7 +42,6 @@ const Login = (props) => {
             setTimeout(() => {
                 setIsLoading(false)
                 if(data.token){
-                    /*props.setLogIn()*/
                     localStorage.setItem('userToken',data.token)
                     localStorage.setItem('userId', data.userId)
                     navigate('/')

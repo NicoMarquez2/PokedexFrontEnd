@@ -21,7 +21,6 @@ const Compare = (props) => {
             .then((response)=>response.json())
             .then((data) => {
               let aux 
-              console.log(data.pokemon[0])
               aux ={
                 name: data.pokemon[0].name,
                 image: data.pokemon[0].img,
@@ -56,7 +55,6 @@ const Compare = (props) => {
               .then((response)=>response.json())
               .then((data) => {
                 let aux 
-                console.log(data.pokemon[0])
                 aux ={
                   name: data.pokemon[0].name,
                   image: data.pokemon[0].img,
@@ -82,7 +80,6 @@ const Compare = (props) => {
         setIsLoading(true)
         setNotSelected(false)
         fetchData(getId(e.target.value))
-        console.log("funciona por favor te pido marta")
     }
 
 function fixStats(pokeStats) {

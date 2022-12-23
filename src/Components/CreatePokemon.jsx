@@ -56,14 +56,6 @@ const CreatePokemon = () => {
     const [isLoading, setIsLoading] = useState(false)
 
 
-
-    /*const onSelect = (selectedList, selectedItem) => {
-  
-    }
-    const onRemove = (selectedList, removedItem) => {
-      
-    }*/
-
     useEffect(() => {
       if(!localStorage.userToken){
         navigate('/')
@@ -251,7 +243,6 @@ const CreatePokemon = () => {
                 <Multiselect
                   options={typeOptions}
                   onSelect={setTypes}
-                  /*onRemove={onRemove}*/
                   displayValue="name"
                   selectionLimit="2"
                   required
@@ -262,7 +253,6 @@ const CreatePokemon = () => {
                 <Multiselect
                   options={movementsOptions}
                   onSelect={setMovements}
-                  /*onRemove={onRemove}*/
                   displayValue="name"
                   selectionLimit="2"
                   required

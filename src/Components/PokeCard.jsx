@@ -8,19 +8,11 @@ import Error from "./Error";
 const PokeCard = (props) => {
   const [pokemon, setpokemon] = useState();
   const [error, setError] = useState(false)
-  //const [pokemonIdx, setpokemonIdx] = useState();
   const [list, setList] = useState([])
   const params = useParams();
   const id = params.id;
   const url = `http://localhost:8080/pokemon/${id}`
   const [isLoading, setIsLoading] = useState(false)
-  /*useEffect(() => {
-    const pokemon = props.list.find((element, idx) => {
-      setpokemonIdx(idx);
-      return element.id == id;
-    });
-    setpokemon(pokemon);
-  }, [props.list, id]);*/
   
   function doNothing(){
     return
@@ -28,7 +20,7 @@ const PokeCard = (props) => {
 
   useEffect(() => {
     props.list ? doNothing(): 
-      console.log("ENTRO IF PORQUE NO LLEGA LISTA Y LA HAGO PA")
+      console.log("")
       let aux = []
       async function fetchData(){
         await fetch('http://localhost:8080/pokemon')

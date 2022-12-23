@@ -41,16 +41,6 @@ const PokeList = (props) => {
 
   return (
     <React.Fragment>
-      {/*<div className="buttonsLogin">
-        <div >
-          {localStorage.userToken ? 
-          <button className="button" onClick={handleLogOut}>LOGOUT</button> : 
-          <Link to = {"/login"}><button className="button">LOGIN</button></Link>}
-        </div>
-        <div >
-            <Link to={"/compare"}><button className="button">COMPARE POKEMON</button></Link> 
-        </div>
-      </div>*/}
       
       {props.isLoading ? <img className="loadingGeneral" src={"./Referencias/loading-13.gif"}/> : <div className="listComponent">
         <Navbar
@@ -79,25 +69,3 @@ const PokeList = (props) => {
 };
 
 export default PokeList;
-
-
-/*
-const [state, setState] = useState({
-  name: '',
-  
-});
-
-handleChange = (e) => {
-  const { name, value } = e.target
-  this.setState({ [name]: value })
-}
-
-<label htmlFor="name">Name</label>
-<input name="name" type="text"
- onChange={this.handleChange}
-  />
-
-  */
-
-  
-

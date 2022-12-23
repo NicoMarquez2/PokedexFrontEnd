@@ -3,23 +3,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const CardTitle = ({pokemon, /*pokemonIdx*/ fixId, list, id})=>{
+const CardTitle = ({pokemon, fixId, list, id})=>{
   const [pokemonIdx, setpokemonIdx] = useState()
-  
-  //console.log(list)
-  /*useEffect(() => {
-    console.log("PRIMER USE EFFECT")
-    console.log(list)
-      list.find((element, idx) => {
-        console.log(idx)
-        console.log(element)
-        setpokemonIdx(idx);
-      })
-  },[])*/
   
 useEffect(() => {
   list.find((element, idx) => {
-    //console.log(idx)
     setpokemonIdx(idx);
     return element.id == id;
   })
