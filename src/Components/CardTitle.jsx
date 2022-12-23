@@ -18,7 +18,6 @@ const CardTitle = ({pokemon, /*pokemonIdx*/ fixId, list, id})=>{
   },[])*/
   
 useEffect(() => {
-  console.log("SEGUNDO USE EFFECT")
   list.find((element, idx) => {
     //console.log(idx)
     setpokemonIdx(idx);
@@ -26,8 +25,6 @@ useEffect(() => {
   })
 },[id])
   
-
-  console.log(pokemonIdx)
     return(
         <React.Fragment>      
             <div>

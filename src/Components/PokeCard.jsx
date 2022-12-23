@@ -71,7 +71,6 @@ const PokeCard = (props) => {
         if(data.message){
           setError(true)
         } else {
-          console.log(data.pokemon[0])
           aux ={
             name: data.pokemon[0].name,
             image: data.pokemon[0].img,
@@ -176,7 +175,7 @@ const PokeCard = (props) => {
                       alt="#"
                       className="imgCategory"
                     />
-                    <span className="spanCategory">{pokemon.heigth}</span>
+                    <span className="spanCategory">{pokemon.heigth} m</span>
                   </div>
 
                   <span className="categoryTitle">Heigth</span>

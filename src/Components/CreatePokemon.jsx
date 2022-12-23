@@ -66,7 +66,6 @@ const CreatePokemon = () => {
 
     useEffect(() => {
       if(!localStorage.userToken){
-        console.log("NO USER")
         navigate('/')
       }
     },[])
@@ -150,9 +149,7 @@ const CreatePokemon = () => {
       const handleButton = async () => {
         if(isValidStat(hp) && isValidStat(atk) && isValidStat(def) && 
           isValidStat(satk) && isValidStat(sdef) && isValidStat(spd)){
-            console.log("entro primer if")
             if(isValidWeightHeight(weight) && isValidWeightHeight(height)){
-              console.log("entro segundo if")
               if(selectsNotEmpty(types[0]) && selectsNotEmpty(movements[0])){
                 let pokemon = {
                   name: name,
@@ -213,39 +210,39 @@ const CreatePokemon = () => {
             <form className="createForm" onSubmit={(e)=>e.preventDefault()}>
             <div className="letters">
               <label htmlFor="name">NAME</label>
-              <input name="Name" type="text" maxLength={16} onChange={handleName}/>
+              <input name="Name" type="text" maxLength={16} required onChange={handleName}/>
 
               <label htmlFor="img">IMG URL</label>
-              <input name="img" type="text" onChange={handleImg}/>
+              <input name="img" type="text" maxLength={255} required onChange={handleImg}/>
 
               <label htmlFor="description">DESCRIPTION</label>
-              <textarea className="textDescription" name="description" type="text" maxLength={255} onChange={handleDescription}/>
+              <textarea className="textDescription" name="description" type="text" maxLength={255} required onChange={handleDescription}/>
             </div>
 
             <div className="numbers">
               <label  htmlFor="weight">WEIGHT</label>
-              <input className="number1" name="weight" type="number" onChange={handleWeight}/>
+              <input className="number1" name="weight" type="number" min={1} required onChange={handleWeight}/>
 
               <label  htmlFor="height">HEIGHT</label>
-              <input className="number2" name="height" type="number" onChange={handleHeight}/>
+              <input className="number2" name="height" type="number" min={1} required onChange={handleHeight}/>
 
               <label  htmlFor="hp">HP</label>
-              <input className="number3" name="hp" type="number" onChange={handleHp}/>
+              <input className="number3" name="hp" type="number" min={1} required onChange={handleHp}/>
 
               <label  htmlFor="atk">ATK</label>
-              <input className="number4" name="atk" type="number" onChange={handleAtk}/>
+              <input className="number4" name="atk" type="number" min={1} max={255} required onChange={handleAtk}/>
 
               <label  htmlFor="def">DEF</label>
-              <input className="number5" name="def" type="number" onChange={handleDef}/>
+              <input className="number5" name="def" type="number" min={1} max={255} required onChange={handleDef}/>
               
               <label  htmlFor="satk">SATK</label>
-              <input className="number6" name="satk" type="number" onChange={handleSatk}/>
+              <input className="number6" name="satk" type="number" min={1} max={255} required onChange={handleSatk}/>
 
               <label  htmlFor="sdef">SDEF</label>
-              <input className="number7" name="sdef" type="number" onChange={handleSdef}/>
+              <input className="number7" name="sdef" type="number" min={1} max={255} required onChange={handleSdef}/>
 
               <label  htmlFor="spd">SPD</label>
-              <input className="number8" name="spd" type="number" onChange={handleSpd}/>
+              <input className="number8" name="spd" type="number" min={1} max={255} required onChange={handleSpd}/>
             </div>
 
             <div className="select">
@@ -257,6 +254,7 @@ const CreatePokemon = () => {
                   /*onRemove={onRemove}*/
                   displayValue="name"
                   selectionLimit="2"
+                  required
                 />
               </div>
               <div className="selectM">
@@ -267,6 +265,7 @@ const CreatePokemon = () => {
                   /*onRemove={onRemove}*/
                   displayValue="name"
                   selectionLimit="2"
+                  required
                 />
               </div>
 
