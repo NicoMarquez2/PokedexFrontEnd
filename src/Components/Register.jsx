@@ -69,7 +69,7 @@ const Register = (props) => {
                 <button className="button" type="submit" onClick={handleButton}>Register</button>
             </form>
             <div>
-                <img className="authImg" src='/Referencias/colorPokeball.png'></img>
+                <img className="registerImg" src='/Referencias/colorPokeball.png'></img>
             </div>           
         </div>
 

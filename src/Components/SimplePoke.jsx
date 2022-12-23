@@ -18,11 +18,13 @@ const SimplePoke = (props)=>{
     return(
         <Link to={`/${props.poke.id}`} className={`simplePokemon ${(typeof props.poke.type==="string") ? props.poke.type : props.poke.type[0]}`}>
             <div className={`pokeId ${(typeof props.poke.type==="string") ? props.poke.type : props.poke.type[0]}`}><span>#{fixId(props.poke.id)}</span></div>
-            <div><img className="pokeImg" src={`${props.poke.image}`}
+            <div className="imgContainer">
+                <img className="pokeImg" src={`${props.poke.image}`}
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null;
                         currentTarget.src="./Referencias/colorPokeball.png";
-                      }} alt="#"/></div>
+                      }} alt="#"/>
+            </div>
             <div className={`Pokenombre ${(typeof props.poke.type==="string") ? props.poke.type : props.poke.type[0]}`}><span>{props.poke.name}</span></div>
         </Link>
     )
