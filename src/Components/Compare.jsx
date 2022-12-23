@@ -123,7 +123,13 @@ function fixStats(pokeStats) {
                     <h1 className="noSelected">Select Pokemons to Compare</h1>}
                 {isLoading ? <img className="loadingImg" src={"./Referencias/loading-13.gif"}/> : firstPokemon && 
                     <div className="pokemons1">
-                        <img className="imgCompare1" src={`${firstPokemon.image}`} alt="" />
+                        <img className="imgCompare1"
+                            src={`${firstPokemon.image}`}
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null;
+                                currentTarget.src="./Referencias/colorPokeball.png";
+                            }}
+                            alt="" />
                         <div className="spanTypes1">
                             <span>Types</span>
                         </div>
@@ -175,7 +181,13 @@ function fixStats(pokeStats) {
                     </div>}
                 {isLoadingSecond ? <img className="loadingImgSecond" src={"./Referencias/loading-13.gif"}/> : secondPokemon &&
                     <div className="pokemons2">
-                        <img className="imgCompare2" src={`${secondPokemon.image}`} alt="" />
+                        <img className="imgCompare2"
+                            src={`${secondPokemon.image}`}
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null;
+                                currentTarget.src="./Referencias/colorPokeball.png";
+                            }}
+                            alt="" />
                         <div className="spanTypes2">
                             <span>Types</span>
                         </div>
