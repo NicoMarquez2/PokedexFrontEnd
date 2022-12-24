@@ -5,6 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+## IMPORTANT
+
+This project is created adapted to a IPhone SE resolution
 
 ### `npm start`
 
