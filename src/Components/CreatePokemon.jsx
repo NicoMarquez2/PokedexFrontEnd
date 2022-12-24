@@ -185,6 +185,7 @@ const CreatePokemon = () => {
                       response.json()
                       if(response.status == 201)
                         setMessage("Pokemon created successfully")})
+                        navigate('/')
                 } else{
                   setMessage('Name or URL cant be empty')
 
