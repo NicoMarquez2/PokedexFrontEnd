@@ -2,7 +2,6 @@ import React, { useEffect, useState }  from "react";
 import SimplePoke from "./SimplePoke";
 import Header from "./Header";
 import CreateButton from "./CreateButton";
-import {Link, redirect} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Register = (props) => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [createdMessage, setCreatedMessage] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const url ="http://localhost:8080/register"
 
@@ -30,6 +31,9 @@ const Register = (props) => {
             email: email,
             password: password
         }
+
+
+
         await fetch(url, {
             method: 'POST',
             headers:{
@@ -39,18 +43,24 @@ const Register = (props) => {
             body: JSON.stringify(userToRegister)
         })
         .then((response) => {
-            if(response.status == 500){
-                setCreatedMessage("An error has occurred")
-            } else if(response.status == 204){
-                setCreatedMessage("Usuario creado exitosamente, regrese al login para iniciar sesion")
-            } else {
-                setCreatedMessage("Email ya registrado")
-            }
+            setTimeout(() => {
+                console.log(isLoading)
+                setIsLoading(false)
+                if(response.status == 500){
+                    setCreatedMessage("An error has occurred")
+                } else if(response.status == 204){
+                    setCreatedMessage("User created succesfully, please back to login and sing in.")
+                } else {
+                    setCreatedMessage("Email already register")
+                }
+            }, 1000)
+            setIsLoading(true)
         })
     }
 
     return(
-        <div className="auth">
+        <React.Fragment>
+            {isLoading ? <img className="loadingGeneral" src={"./Referencias/loading-13.gif"}/> : <div className="auth">
             <div>
                 <Link to={"/login"}><img src="/Referencias/arrow-left.svg" /></Link>
             </div>
@@ -71,8 +81,8 @@ const Register = (props) => {
             <div>
                 <img className="registerImg" src='/Referencias/colorPokeball.png'></img>
             </div>           
-        </div>
-
+        </div>}
+        </React.Fragment>
     )
 }
 

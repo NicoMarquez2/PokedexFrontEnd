@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ProgressBar from "./ProgressBar";
 
 
 const Compare = (props) => {
@@ -44,9 +43,13 @@ const Compare = (props) => {
               }, 1000);
             })
           }
-        setIsLoadingSecond(true)
-        setNotSelected(false)
-        fetchData(getId(e.target.value))
+        if(e.target.value != 'none'){
+            setIsLoadingSecond(true)
+            setNotSelected(false)
+            fetchData(getId(e.target.value))
+        }else{
+            setSecondPokemon(null)
+       }
     }
 
     const handleFirstSelect = (e) => {
@@ -77,9 +80,13 @@ const Compare = (props) => {
                   }, 1000);
               })
             }
-        setIsLoading(true)
-        setNotSelected(false)
-        fetchData(getId(e.target.value))
+            if(e.target.value != 'none'){
+                setIsLoading(true)
+                setNotSelected(false)
+                fetchData(getId(e.target.value))
+        }else{
+             setFirstPokemon(null)
+        }
     }
 
 function fixStats(pokeStats) {
@@ -110,7 +117,7 @@ function fixStats(pokeStats) {
                     <div className="secondSelect">
                         <label htmlFor="secondPokemon">Choose Pokemon</label>
                         <select className="selectPokemon" name="secondPokemon" onChange={handleSecondSelect}>
-                            <option disabled>none</option>
+                            <option>none</option>
                             {props.list.map((element, key) => (
                                 <option key={key} value={`${element.name}`}>{element.name}</option>
                             ))}

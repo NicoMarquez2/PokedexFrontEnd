@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from "react";
-import { json, Link, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Multiselect from 'multiselect-react-dropdown';
 
 const url = 'http://localhost:8080/pokemon'  
@@ -79,6 +79,14 @@ const CreatePokemon = () => {
       if(selects) return true
       else return false
     }
+    function isValidName(name){
+      if(name) return true
+      else return false
+    }
+    function isValidUrl(url){
+      if(url) return true
+      else return false
+    }
 
      const handleName = (e) => {
         e.preventDefault()
@@ -143,46 +151,52 @@ const CreatePokemon = () => {
           isValidStat(satk) && isValidStat(sdef) && isValidStat(spd)){
             if(isValidWeightHeight(weight) && isValidWeightHeight(height)){
               if(selectsNotEmpty(types[0]) && selectsNotEmpty(movements[0])){
-                let pokemon = {
-                  name: name,
-                  img: img,
-                  description: description,
-                  weight: weight,
-                  height: height,
-                  hp: hp,
-                  atk: atk,
-                  def: def,
-                  satk: satk,
-                  sdef: sdef,
-                  spd: spd
-                }
-                  let pokemonTypes = types
-                  let pokemonMovements = movements
+                if(isValidName(name)&& isValidUrl(img)){
+                  let pokemon = {
+                    name: name,
+                    img: img,
+                    description: description,
+                    weight: weight,
+                    height: height,
+                    hp: hp,
+                    atk: atk,
+                    def: def,
+                    satk: satk,
+                    sdef: sdef,
+                    spd: spd
+                  }
+  
+                    let pokemonTypes = types
+                    let pokemonMovements = movements
+  
+                    setIsLoading(true)
+  
+                    await fetch(url,{
+                      method: 'POST',
+                      body: JSON.stringify({pokemon, pokemonTypes, pokemonMovements}),
+                      headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json',
+                          'UserId': localStorage.getItem('userId'),
+                          'Autorithation': localStorage.getItem('userToken')
+                      }
+                    })
+                    .then((response)=>{
+                      response.json()
+                      if(response.status == 201)
+                        setMessage("Pokemon created successfully")})
+                } else{
+                  setMessage('Name or URL cant be empty')
 
-                  setIsLoading(true)
-
-                  await fetch(url,{
-                    method: 'POST',
-                    body: JSON.stringify({pokemon, pokemonTypes, pokemonMovements}),
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'UserId': localStorage.getItem('userId'),
-                        'Autorithation': localStorage.getItem('userToken')
-                    }
-                  })
-                  .then((response)=>{
-                    response.json()
-                    if(response.status == 201)
-                      setMessage("Pokemon created successfully")})                  
+                }                  
               } else {
                 setMessage('Types or movements cant be empty')
               }              
             } else {
-              setMessage('El peso o altura no puede ser vacío')
+              setMessage('Height or Weight cant be empty')
             }           
         } else {
-          setMessage('El valor de las stats no puede ser mayor a 255')
+          setMessage('Value sats cant be higher than 255')
         }
         setTimeout(() => {
           setIsLoading(false)

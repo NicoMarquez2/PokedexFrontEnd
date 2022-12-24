@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import { Link, useNavigate } from "react-router-dom";
-import  { Redirect } from 'react-router-dom'
 
 
 const Login = (props) => {

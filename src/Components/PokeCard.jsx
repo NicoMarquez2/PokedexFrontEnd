@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
-import { Link } from "react-router-dom";
 import CardTitle from "./CardTitle";
 import Error from "./Error";
 
@@ -115,7 +114,6 @@ const PokeCard = (props) => {
           <div className="cardTitle">
               <CardTitle
               pokemon={pokemon}
-              //pokemonIdx={pokemonIdx}
               fixId={fixId}
               list={list ? list : props.list}
               id={id}/>
